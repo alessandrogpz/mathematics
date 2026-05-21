@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Obsidian
+# Note: Usually you WANT to commit .obsidian for your settings/plugins, 
+# but you might want to ignore workspace-specific state.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Local Memory/Temp (if any)
+.gemini/
+memory/
