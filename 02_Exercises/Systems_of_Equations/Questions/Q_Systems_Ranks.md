@@ -1,5 +1,9 @@
-# Exercise: Systems of Equations & Solution Types
-
+---
+topic: Systems of Equations
+difficulty: Medium
+tags: [exercise, question, ranks, consistency]
+---
+# Question
 ## Part 1: Calculation
 Solve the following system of linear equations using Gauss-Jordan elimination:
 $$
@@ -15,3 +19,6 @@ $$
 2. Calculate the rank of the coefficient matrix $A$ and the rank of the augmented matrix $[A | \vec{b}]$.
 3. Based on the ranks, determine if the system is consistent and whether it has a unique solution or infinitely many solutions.
 4. If you changed the result of the third equation from $23$ to $25$, how would the ranks change, and what would that imply about the solutions?
+
+---
+**Check Answer:** [[S_Systems_Ranks]]
