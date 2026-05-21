@@ -31,9 +31,3 @@ Unlike the dot product which gives a number, the cross product gives a **new vec
 - Point fingers in direction of $\vec{a}$.
 - Curl fingers toward $\vec{b}$.
 - Thumb points in direction of $\vec{a} \times \vec{b}$.
-```mermaid
-graph TD
-    A(Vector A) -->|cross| B(Vector B)
-    B --> Result(Perpendicular Vector)
-    A --> Result
-```
