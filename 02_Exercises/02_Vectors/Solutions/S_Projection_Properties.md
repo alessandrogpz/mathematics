@@ -1,13 +1,7 @@
 ---
-topic:
-difficulty:
-tags:
-  - exercise
----
----
 topic: Vectors
 tags: [exercise, solution]
-- - -
+---
 # Solution
 ## Derivation
 [Insert step-by-step LaTeX math here]
