@@ -15,13 +15,15 @@ Linear Algebra/
 ├── 01_Concepts/               # Theoretical notes organized by mathematical topics
 │   ├── 01_Systems_of_Equations/
 │   ├── 02_Vectors/            # e.g., Dot Product, Cross Product, Projections
-│   └── 03_Matrices/
+│   ├── 03_Matrices/
+│   └── 04_Transforms/         # e.g., Rotations, Reflections, Similarity Transforms
 ├── 02_Exercises/              # Practical questions and complete step-by-step solutions
 │   ├── 01_Systems_of_Equations/
 │   │   ├── Questions/         # md files named: Q_[Exercise_Name].md
 │   │   └── Solutions/         # md files named: S_[Exercise_Name].md
 │   ├── 02_Vectors/
-│   └── 03_Matrices/
+│   ├── 03_Matrices/
+│   └── 04_Transforms/
 ├── 03_Code/                   # (Optional) Code implementations (C++, Python, etc.)
 ├── 99_Templates/              # Templates for new Questions and Solutions
 │   ├── Template_Question.md
@@ -41,12 +43,12 @@ To maximize active recall and build a semantic understanding of Linear Algebra, 
 ```mermaid
 graph TD
     subgraph Concepts ["01_Concepts (Theory)"]
-        C["Dot Product Note<br>(02_Dot_Product.md)"]
+        C["Concept Note<br>(e.g., 01_Transformation_Matrices.md)"]
     end
 
     subgraph Exercises ["02_Exercises (Practice)"]
-        Q["Question Note<br>(Q_Angle_Dot_Product.md)"]
-        S["Solution Note<br>(S_Angle_Dot_Product.md)"]
+        Q["Question Note<br>(e.g., Q_Orthogonal_Transforms.md)"]
+        S["Solution Note<br>(e.g., S_Orthogonal_Transforms.md)"]
     end
 
     Q -- "Check Answer" --> S
