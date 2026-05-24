@@ -115,7 +115,3 @@ Because System $A$ is rotated $-90^\circ$ relative to System $B$, System $A$'s l
 
 **Back to Question:** [[Q_Orthogonal_Transforms]] | **Related Concepts:** [[01_Transformation_Matrices]]
 
----
-## Attachments
-*   [[98_Attachments/S_Orthogonal_Transforms.pdf|View Handwritten Solution PDF]]
-

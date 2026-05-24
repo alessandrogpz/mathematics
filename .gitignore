@@ -20,6 +20,3 @@ Thumbs.db
 .gemini/
 memory/
 
-# Attachments (Ignore large binary files to keep git repo light)
-98_Attachments/
-

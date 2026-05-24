@@ -12,7 +12,3 @@ tags: [exercise, solution]
 ```
 
 **Back to Question:** [[Question_Name]] | **Related Concepts:** [[Link to relevant concept note]]
-
----
-## Attachments
-*   [[Solution_Name.pdf|View Reference PDF]]
