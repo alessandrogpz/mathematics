@@ -6,7 +6,7 @@ This repository is designed to integrate seamlessly with **Obsidian**, utilizing
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 The workspace is organized into modular directories with numbered prefixes to maintain a structured order in your file explorer:
 
@@ -36,7 +36,7 @@ Linear Algebra/
 
 ---
 
-## 🔗 Knowledge Graph & Linking Philosophy
+## Knowledge Graph & Linking Philosophy
 
 To maximize active recall and build a semantic understanding of Linear Algebra, this vault employs a strict **bi-directional linking strategy**:
 
@@ -68,7 +68,7 @@ graph TD
 
 ---
 
-## ⚡ Daily Workflow
+## Daily Workflow
 
 Here is how to get the most out of your repository on a daily basis:
 
