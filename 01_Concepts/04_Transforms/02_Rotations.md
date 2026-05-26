@@ -83,3 +83,59 @@ All principal rotation matrices are **orthogonal matrices**, meaning they exhibi
 1.  **Inverse equals Transpose:** $\mathbf{M}^{-1} = \mathbf{M}^T$. This makes inverting a rotation incredibly cheap computationally.
 2.  **Determinant equals 1:** $\det(\mathbf{M}) = 1$. This confirms they are orientation-preserving pure rotations.
 3.  **Preservation:** They preserve vector lengths, angles, and dot products.
+
+---
+
+## 5. Rotation About an Arbitrary Axis
+
+We want to construct a transform that rotates a vector around an arbitrary axis $\vec{a}$.
+
+![[98_Assets/Concepts/rotation_arbitrary_axis.webp]]
+
+### Step 1: Component Breakdown
+
+We need to break $\vec{v}$ into two distinct components:
+
+- **Parallel Piece ($v_{\parallel a}$):** The shadow that $\vec{v}$ casts on $\vec{a}$. This piece does not move since it is located on the axis of rotation.
+    
+- **Perpendicular Piece ($v_{\perp a}$):** The rejection of $\vec{v}$ from $\vec{a}$ (the piece shooting off at $90^\circ$ from $\vec{a}$). This is the piece that rotates.
+    
+![[98_Assets/Concepts/decomposing_v.webp]]
+
+### Step 2: Rotating the Perpendicular Piece
+
+Now we need to rotate $v_{\perp a}$. We need a local x-axis and y-axis:
+
+- **Local x-axis:** The starting position of $v_{\perp a}$.
+    
+- **Local y-axis:** It is the cross product of $\vec{a} \times \vec{v}$.
+    
+
+![[98_Assets/Concepts/localx_localy.webp]]
+
+By applying standard 2D rotation ($\cos\theta$ for the x-axis and $\sin\theta$ for the y-axis), the new position of the rotating piece is defined as:
+
+$$v' = v_{\parallel a} + v_{\perp a}\cos\theta + (\vec{a} \times \vec{v})\sin\theta$$
+
+![[decomosing_rotated_v.webp]]
+### Step 3: Creating the Equation
+
+We know that $v = v_{\parallel a} + v_{\perp a}$, therefore $v_{\perp a} = v - v_{\parallel a}$. The parallel component of $\vec{v}$ onto a unit vector is defined as $v_{\parallel a} = (\vec{v} \cdot \vec{a})\vec{a}$. This gives us $v_{\perp a} = \vec{v} - (\vec{v} \cdot \vec{a})\vec{a}$.
+
+Making the necessary substitutions to the formula, we get the final rotation formula:
+
+$$v' = (\vec{v} \cdot \vec{a})\vec{a} + (\vec{v} - (\vec{v} \cdot \vec{a})\vec{a})\cos\theta + (\vec{a} \times \vec{v})\sin\theta$$
+
+Further reduction yields:
+
+$$v' = \vec{v}\cos\theta + (\vec{v} \cdot \vec{a})\vec{a}(1 - \cos\theta) + (\vec{a} \times \vec{v})\sin\theta$$
+
+### Step 4: Matrix Formulation
+
+The projection $(\vec{v} \cdot \vec{a})\vec{a}$ and the cross product $(\vec{a} \times \vec{v})$ can be expressed by a 3x3 matrix multiplying the vector. The identity matrix is inserted so all terms have a 3x3 matrix.
+
+$$v' = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \vec{v}\cos\theta + \begin{bmatrix} a_x^2 & a_x a_y & a_x a_z \\ a_x a_y & a_y^2 & a_y a_z \\ a_x a_z & a_y a_z & a_z^2 \end{bmatrix} \vec{v}(1 - \cos\theta) + \begin{bmatrix} 0 & -a_z & a_y \\ a_z & 0 & -a_x \\ -a_y & a_x & 0 \end{bmatrix} \vec{v}\sin\theta$$
+
+We can combine everything into a single matrix:
+
+$$M_{\text{rot}}(\theta, \vec{a}) = \begin{bmatrix} \cos\theta + (1 - \cos\theta)a_x^2 & (1 - \cos\theta)a_x a_y - \sin\theta a_z & (1 - \cos\theta)a_x a_z + \sin\theta a_y \\ (1 - \cos\theta)a_x a_y + \sin\theta a_z & \cos\theta + (1 - \cos\theta)a_y^2 & (1 - \cos\theta)a_y a_z - \sin\theta a_x \\ (1 - \cos\theta)a_x a_z - \sin\theta a_y & (1 - \cos\theta)a_y a_z + \sin\theta a_x & \cos\theta + (1 - \cos\theta)a_z^2 \end{bmatrix}$$
