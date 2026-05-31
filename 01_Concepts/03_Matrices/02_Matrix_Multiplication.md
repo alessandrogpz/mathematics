@@ -21,3 +21,11 @@ $$
 | **Distributive** | $A(B + C) = AB + AC$ |
 | **Scalar Factorization** | $s(AB) = (sA)B = A(sB)$ |
 | **Transpose Rule** | $(AB)^T = B^T A^T$ (The order is reversed!) |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

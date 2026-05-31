@@ -28,3 +28,11 @@ $$
 | **Commutative** | $\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}$ |
 | **Distributive** | $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$ |
 | **Scalar Factorization** | $\vec{a} \cdot (s\vec{b}) = s(\vec{a} \cdot \vec{b})$ |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

@@ -44,3 +44,11 @@ Vectors must have the same number of components to be added or subtracted.
 | **Associative** | Scalar-vector | $s(t\vec{a}) = (st)\vec{a}$ |
 | **Commutative** | Scalar-vector | $s\vec{a} = \vec{a}s$ |
 | **Distributive** | Scalar-vector | $(s + t)\vec{a} = s\vec{a} + t\vec{a}$ |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

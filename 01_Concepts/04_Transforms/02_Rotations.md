@@ -1,4 +1,4 @@
- # Rotations in 3D Space
+# Rotations in 3D Space
 
 In 3D game engines and graphics programming, rotations are fundamental transformations. A rotation typically occurs within a local coordinate system where the axis of rotation is aligned with one of the coordinate axes ($x$, $y$, or $z$), though they can also be performed about an arbitrary axis specified by a unit direction vector.
 
@@ -209,3 +209,10 @@ $$
 M_{\text{rot}}(\theta, \vec{a}) = \begin{bmatrix} \cos\theta + (1 - \cos\theta)a_x^2 & (1 - \cos\theta)a_x a_y - \sin\theta a_z & (1 - \cos\theta)a_x a_z + \sin\theta a_y \\\\ (1 - \cos\theta)a_x a_y + \sin\theta a_z & \cos\theta + (1 - \cos\theta)a_y^2 & (1 - \cos\theta)a_y a_z - \sin\theta a_x \\\\ (1 - \cos\theta)a_x a_z - \sin\theta a_y & (1 - \cos\theta)a_y a_z + \sin\theta a_x & \cos\theta + (1 - \cos\theta)a_z^2 \end{bmatrix}
 $$
 
+---
+
+## Code Implementation
+
+```cpp
+
+```

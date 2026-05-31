@@ -31,3 +31,11 @@ $$
 - **Gauss-Jordan Elimination:** Transform the augmented matrix into **Reduced Row Echelon Form (RREF)**.
 - **Matrix Inverse:** If $A$ is square and invertible, $\vec{x} = A^{-1}\vec{b}$.
 - **Cramer's Rule:** Uses determinants (useful for small systems).
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

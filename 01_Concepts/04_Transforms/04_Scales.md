@@ -125,3 +125,11 @@ $$
   * For uniform scaling, $\mathbf{M}^{-1} = \mathbf{M}(1/s)$.
   * For non-uniform scaling, the diagonal entries become $1/s_x$, $1/s_y$, and $1/s_z$.
   * For arbitrary scaling, $\mathbf{M}_{\text{scale}}(s, \vec{a})^{-1} = \mathbf{M}_{\text{scale}}(1/s, \vec{a})$.
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

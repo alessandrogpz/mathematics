@@ -148,3 +148,8 @@ When you calculate the outer product of a unit vector with itself ($\hat{u}\hat{
 
 ---
 
+## Code Implementation
+
+```cpp
+
+```

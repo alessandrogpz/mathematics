@@ -103,3 +103,11 @@ This method uses an **augmented matrix** $[M | I]$:
 | **Row Swap** | Swapping two rows. |
 | **Scalar Mult** | Multiplying a row by a non-zero scalar. |
 | **Row Addition** | Adding or subtracting a multiple of one row from another. |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

@@ -45,3 +45,11 @@ You can transform a matrix into **row echelon form** using row operations. The d
 | **Inverse** | $\det(A^{-1}) = \frac{1}{\det(A)}$ |
 | **Product Rule** | $\det(AB) = \det(A) \det(B)$ |
 | **Scalar Mult** | $\det(kA) = k^n \det(A)$ (where $n$ is the dimension) |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

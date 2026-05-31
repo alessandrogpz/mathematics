@@ -51,3 +51,11 @@ $$
 | **Linearity** | $\text{tr}(A + B) = \text{tr}(A) + \text{tr}(B)$ and $\text{tr}(cA) = c \cdot \text{tr}(A)$ |
 | **Transpose** | $\text{tr}(A^T) = \text{tr}(A)$ |
 | **Cyclic Property** | $\text{tr}(AB) = \text{tr}(BA)$ (even if $AB \neq BA$) |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

@@ -33,3 +33,11 @@ $$
 - Point fingers in direction of $\vec{a}$.
 - Curl fingers toward $\vec{b}$.
 - Thumb points in direction of $\vec{a} \times \vec{b}$ (see [[03_Coordinate_Systems]] for left-hand vs. right-hand systems).
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

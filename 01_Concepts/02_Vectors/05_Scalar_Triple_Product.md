@@ -20,3 +20,11 @@ $$
 | **Cyclic Order** | $(\vec{a} \times \vec{b}) \cdot \vec{c} = (\vec{b} \times \vec{c}) \cdot \vec{a} = (\vec{c} \times \vec{a}) \cdot \vec{b}$ |
 | **Sign Change** | $[\vec{a}, \vec{b}, \vec{c}] = -[\vec{c}, \vec{b}, \vec{a}]$ (reversing any two vectors flips the sign) |
 | **Coplanarity Check** | $[\vec{a}, \vec{b}, \vec{c}] = 0 \iff$ Vectors are in the same plane. |
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

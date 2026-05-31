@@ -14,3 +14,11 @@ Commonly used in some computer graphics applications (like DirectX or Unity's de
 
 ## Why It Matters
 When working with **Cross Products** (see [[04_Cross_Product]]), the resulting vector $\vec{a} \times \vec{b}$ is defined to follow the **Right-Hand Rule**. If you are working in a Left-Handed coordinate system, you must be careful as your visual intuition for "up" or "forward" might be inverted compared to the mathematical result.
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

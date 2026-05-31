@@ -221,3 +221,11 @@ $$
 > **Summary of Dimensional Flips:**
 > *   Any transformation that flips an **odd number of dimensions** is a orientation-reversing **mirror reflection** ($\det(\mathbf{M}) = -1$).
 > *   Any transformation that flips an **even number of dimensions** is an orientation-preserving **rotation** ($\det(\mathbf{M}) = +1$).
+
+---
+
+## Code Implementation
+
+```cpp
+
+```

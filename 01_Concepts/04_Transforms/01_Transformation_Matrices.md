@@ -120,3 +120,11 @@ To apply $\mathbf{B}$ to a vector $\vec{v}_B$ in system $B$, you can read the ri
 3.  **$\mathbf{M}(\mathbf{A}\mathbf{M}^{-1}\vec{v}_B)$:** Transform the result back into system $B$.
 
 This elegant formula is how operations themselves (such as scaling, rotations, or shears) are mapped between different coordinate frameworks.
+
+---
+
+## Code Implementation
+
+```cpp
+
+```
