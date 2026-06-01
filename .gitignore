@@ -10,6 +10,13 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# CLion / JetBrains / CMake
+.idea/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-*/
+
+
 # Obsidian
 # Note: Commit settings but ignore third-party code, caches, and local workspace state.
 .obsidian/workspace.json
