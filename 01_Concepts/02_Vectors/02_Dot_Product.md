@@ -33,6 +33,4 @@ $$
 
 ## Code Implementation
 
-```cpp
-
-```
+*   **C++ Source Code:** [[03_Code/02_Vectors/02_Dot_Product.cpp|02_Dot_Product.cpp]]

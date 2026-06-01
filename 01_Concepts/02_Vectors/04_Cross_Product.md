@@ -38,6 +38,4 @@ $$
 
 ## Code Implementation
 
-```cpp
-
-```
+*   **C++ Source Code:** [[03_Code/02_Vectors/04_Cross_Product.cpp|04_Cross_Product.cpp]]

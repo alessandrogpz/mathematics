@@ -31,6 +31,4 @@ $$
 
 ## Code Implementation
 
-```cpp
-
-```
+*   **C++ Source Code:** [[03_Code/03_Matrices/05_Orthogonal_Matrices.cpp|05_Orthogonal_Matrices.cpp]]
