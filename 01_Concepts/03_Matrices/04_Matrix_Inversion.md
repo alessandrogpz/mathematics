@@ -108,4 +108,4 @@ This method uses an **augmented matrix** $[M | I]$:
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/03_Matrices/04_Matrix_Inversion.cpp|04_Matrix_Inversion.cpp]]
+*   **C++ Source Code:** [[03_Code/03_Matrices/04_Matrix_Inversion.cppm|04_Matrix_Inversion.cppm]]

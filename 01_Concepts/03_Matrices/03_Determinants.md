@@ -50,4 +50,4 @@ You can transform a matrix into **row echelon form** using row operations. The d
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/03_Matrices/03_Determinants.cpp|03_Determinants.cpp]]
+*   **C++ Source Code:** [[03_Code/03_Matrices/03_Determinants.cppm|03_Determinants.cppm]]

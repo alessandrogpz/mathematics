@@ -25,4 +25,4 @@ $$
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/02_Vectors/05_Scalar_Triple_Product.cpp|05_Scalar_Triple_Product.cpp]]
+*   **C++ Source Code:** [[03_Code/02_Vectors/05_Scalar_Triple_Product.cppm|05_Scalar_Triple_Product.cppm]]

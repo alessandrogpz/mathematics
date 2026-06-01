@@ -36,4 +36,4 @@ $$
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/01_Systems_of_Equations/01_Linear_Systems.cpp|01_Linear_Systems.cpp]]
+*   **C++ Source Code:** [[03_Code/01_Systems_of_Equations/01_Linear_Systems.cppm|01_Linear_Systems.cppm]]

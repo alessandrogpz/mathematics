@@ -215,4 +215,4 @@ This $3 \times 3$ matrix represents the **orthogonal rejection operator**. Multi
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/02_Vectors/06_Vector_Projection.cpp|06_Vector_Projection.cpp]]
+*   **C++ Source Code:** [[03_Code/02_Vectors/06_Vector_Projection.cppm|06_Vector_Projection.cppm]]
