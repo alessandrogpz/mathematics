@@ -4,7 +4,6 @@ module;
 
 export module matrices_inversion;
 
-export int main() {
+export void test_matrices_inversion() {
     std::cout << "Matrices - Matrix Inversion Module" << std::endl;
-    return 0;
 }

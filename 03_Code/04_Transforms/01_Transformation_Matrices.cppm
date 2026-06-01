@@ -4,7 +4,6 @@ module;
 
 export module transforms_matrices;
 
-export int main() {
+export void test_transforms_matrices() {
     std::cout << "Transforms - Transformation Matrices Module" << std::endl;
-    return 0;
 }

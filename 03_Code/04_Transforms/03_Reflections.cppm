@@ -4,7 +4,6 @@ module;
 
 export module transforms_reflections;
 
-export int main() {
+export void test_transforms_reflections() {
     std::cout << "Transforms - Reflections Module" << std::endl;
-    return 0;
 }

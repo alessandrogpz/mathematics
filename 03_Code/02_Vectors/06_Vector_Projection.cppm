@@ -4,7 +4,6 @@ module;
 
 export module vectors_projection;
 
-export int main() {
+export void test_vectors_projection() {
     std::cout << "Vectors - Vector Projection Module" << std::endl;
-    return 0;
 }

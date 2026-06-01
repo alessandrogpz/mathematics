@@ -4,7 +4,6 @@ module;
 
 export module matrices_multiplication;
 
-export int main() {
+export void test_matrices_multiplication() {
     std::cout << "Matrices - Matrix Multiplication Module" << std::endl;
-    return 0;
 }

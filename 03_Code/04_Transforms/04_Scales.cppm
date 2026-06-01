@@ -4,7 +4,6 @@ module;
 
 export module transforms_scales;
 
-export int main() {
+export void test_transforms_scales() {
     std::cout << "Transforms - Scales Module" << std::endl;
-    return 0;
 }

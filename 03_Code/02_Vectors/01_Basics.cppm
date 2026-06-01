@@ -4,7 +4,6 @@ module;
 
 export module vectors_basics;
 
-export int main() {
+export void test_vectors_basics() {
     std::cout << "Vectors - Basics Module" << std::endl;
-    return 0;
 }

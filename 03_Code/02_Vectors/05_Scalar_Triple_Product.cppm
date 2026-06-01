@@ -4,7 +4,6 @@ module;
 
 export module vectors_scalar_triple_product;
 
-export int main() {
+export void test_vectors_scalar_triple_product() {
     std::cout << "Vectors - Scalar Triple Product Module" << std::endl;
-    return 0;
 }

@@ -4,7 +4,6 @@ module;
 
 export module transforms_rotations;
 
-export int main() {
+export void test_transforms_rotations() {
     std::cout << "Transforms - Rotations Module" << std::endl;
-    return 0;
 }

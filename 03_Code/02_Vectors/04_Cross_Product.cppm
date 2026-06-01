@@ -4,7 +4,6 @@ module;
 
 export module vectors_cross_product;
 
-export int main() {
+export void test_vectors_cross_product() {
     std::cout << "Vectors - Cross Product Module" << std::endl;
-    return 0;
 }

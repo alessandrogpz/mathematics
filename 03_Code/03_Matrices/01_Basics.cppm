@@ -4,7 +4,6 @@ module;
 
 export module matrices_basics;
 
-export int main() {
+export void test_matrices_basics() {
     std::cout << "Matrices - Basics Module" << std::endl;
-    return 0;
 }
