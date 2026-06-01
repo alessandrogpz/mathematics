@@ -4,6 +4,8 @@ module;
 
 export module vectors_dot_product;
 
-export void test_vectors_dot_product() {
-    std::cout << "Vectors - Dot Product Module" << std::endl;
+export namespace vectors {
+    void test_vectors_dot_product() {
+        std::cout << "Vectors - Dot Product Module" << std::endl;
+    }
 }

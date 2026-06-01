@@ -4,6 +4,8 @@ module;
 
 export module vectors_basics;
 
-export void test_vectors_basics() {
-    std::cout << "Vectors - Basics Module" << std::endl;
+export namespace vectors {
+    void test_vectors_basics() {
+        std::cout << "Vectors - Basics Module" << std::endl;
+    }
 }

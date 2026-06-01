@@ -4,6 +4,8 @@ module;
 
 export module transforms_reflections;
 
-export void test_transforms_reflections() {
-    std::cout << "Transforms - Reflections Module" << std::endl;
+export namespace transforms {
+    void test_transforms_reflections() {
+        std::cout << "Transforms - Reflections Module" << std::endl;
+    }
 }

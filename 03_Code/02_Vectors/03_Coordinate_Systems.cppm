@@ -4,6 +4,8 @@ module;
 
 export module vectors_coordinate_systems;
 
-export void test_vectors_coordinate_systems() {
-    std::cout << "Vectors - Coordinate Systems Module" << std::endl;
+export namespace vectors {
+    void test_vectors_coordinate_systems() {
+        std::cout << "Vectors - Coordinate Systems Module" << std::endl;
+    }
 }

@@ -4,6 +4,8 @@ module;
 
 export module vectors_cross_product;
 
-export void test_vectors_cross_product() {
-    std::cout << "Vectors - Cross Product Module" << std::endl;
+export namespace vectors {
+    void test_vectors_cross_product() {
+        std::cout << "Vectors - Cross Product Module" << std::endl;
+    }
 }

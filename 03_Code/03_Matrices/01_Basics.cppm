@@ -4,6 +4,8 @@ module;
 
 export module matrices_basics;
 
-export void test_matrices_basics() {
-    std::cout << "Matrices - Basics Module" << std::endl;
+export namespace matrices {
+    void test_matrices_basics() {
+        std::cout << "Matrices - Basics Module" << std::endl;
+    }
 }

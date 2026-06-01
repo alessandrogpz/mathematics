@@ -4,6 +4,8 @@ module;
 
 export module transforms_rotations;
 
-export void test_transforms_rotations() {
-    std::cout << "Transforms - Rotations Module" << std::endl;
+export namespace transforms {
+    void test_transforms_rotations() {
+        std::cout << "Transforms - Rotations Module" << std::endl;
+    }
 }

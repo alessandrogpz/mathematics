@@ -4,6 +4,8 @@ module;
 
 export module matrices_determinants;
 
-export void test_matrices_determinants() {
-    std::cout << "Matrices - Determinants Module" << std::endl;
+export namespace matrices {
+    void test_matrices_determinants() {
+        std::cout << "Matrices - Determinants Module" << std::endl;
+    }
 }

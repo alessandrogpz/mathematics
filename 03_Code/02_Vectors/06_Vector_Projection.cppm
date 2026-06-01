@@ -4,6 +4,8 @@ module;
 
 export module vectors_projection;
 
-export void test_vectors_projection() {
-    std::cout << "Vectors - Vector Projection Module" << std::endl;
+export namespace vectors {
+    void test_vectors_projection() {
+        std::cout << "Vectors - Vector Projection Module" << std::endl;
+    }
 }

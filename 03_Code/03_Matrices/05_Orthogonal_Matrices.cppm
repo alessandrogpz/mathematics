@@ -4,6 +4,8 @@ module;
 
 export module matrices_orthogonal;
 
-export void test_matrices_orthogonal() {
-    std::cout << "Matrices - Orthogonal Matrices Module" << std::endl;
+export namespace matrices {
+    void test_matrices_orthogonal() {
+        std::cout << "Matrices - Orthogonal Matrices Module" << std::endl;
+    }
 }

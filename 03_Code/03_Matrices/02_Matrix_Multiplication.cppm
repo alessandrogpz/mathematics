@@ -4,6 +4,8 @@ module;
 
 export module matrices_multiplication;
 
-export void test_matrices_multiplication() {
-    std::cout << "Matrices - Matrix Multiplication Module" << std::endl;
+export namespace matrices {
+    void test_matrices_multiplication() {
+        std::cout << "Matrices - Matrix Multiplication Module" << std::endl;
+    }
 }

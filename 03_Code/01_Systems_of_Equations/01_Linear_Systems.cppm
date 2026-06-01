@@ -4,6 +4,8 @@ module;
 
 export module systems_linear_systems;
 
-export void test_systems_linear_systems() {
-    std::cout << "Systems of Equations - Linear Systems Module" << std::endl;
+export namespace systems {
+    void test_systems_linear_systems() {
+        std::cout << "Systems of Equations - Linear Systems Module" << std::endl;
+    }
 }

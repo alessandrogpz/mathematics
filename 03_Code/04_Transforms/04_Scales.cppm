@@ -4,6 +4,8 @@ module;
 
 export module transforms_scales;
 
-export void test_transforms_scales() {
-    std::cout << "Transforms - Scales Module" << std::endl;
+export namespace transforms {
+    void test_transforms_scales() {
+        std::cout << "Transforms - Scales Module" << std::endl;
+    }
 }
