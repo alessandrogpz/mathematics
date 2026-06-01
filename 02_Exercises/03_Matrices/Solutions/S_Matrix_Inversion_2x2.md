@@ -166,11 +166,4 @@ $$
 
     Similarly, $\mathbf{X}\mathbf{A} = \mathbf{I}$. Since $\mathbf{X}$ satisfies all conditions of a matrix inverse, $\mathbf{A}^{-1}$ is proven to exist.
 
----
-
-## Code Implementation
-```cpp
-// Optional C++ snippet here
-```
-
 **Back to Question:** [[Q_Matrix_Inversion_2x2]] | **Related Concepts:** [[03_Determinants]], [[04_Matrix_Inversion]]

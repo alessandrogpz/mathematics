@@ -34,11 +34,4 @@ This solution note is scaffolded to record your step-by-step derivations.
 
 ---
 
-## Code Implementation
-```cpp
-// Optional C++ snippet here
-```
-
----
-
 **Back to Question:** [[Q_Reflections]] | **Related Concepts:** [[03_Reflections]]

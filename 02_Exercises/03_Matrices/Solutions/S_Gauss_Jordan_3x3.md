@@ -135,10 +135,4 @@ $$
 \text{Total Operations} = n + (n^2 - n) = n^2 \text{ operations}
 $$
 
----
-## Code Implementation
-```cpp
-// Optional C++ snippet here
-```
-
 **Back to Question:** [[Q_Gauss_Jordan_3x3]] | **Related Concepts:** [[03_Matrices]]

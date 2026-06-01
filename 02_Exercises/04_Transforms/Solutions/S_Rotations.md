@@ -255,11 +255,4 @@ This perfectly verifies the rotated vector computed using Rodrigues' Formula.
 
 ---
 
-## Code Implementation
-```cpp
-// Optional C++ snippet here
-```
-
----
-
 **Back to Question:** [[Q_Rotations]] | **Related Concepts:** [[02_Rotations]]

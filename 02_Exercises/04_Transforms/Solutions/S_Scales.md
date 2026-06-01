@@ -223,14 +223,4 @@ $$
 
 ---
 
-## Code Implementation
-
-The following C++ helper functions construct an arbitrary 3D scaling matrix and apply it to a vector:
-
-```cpp
-
-```
-
----
-
 **Back to Question:** [[Q_Scales]] | **Related Concepts:** [[04_Scales]]

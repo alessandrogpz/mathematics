@@ -113,11 +113,5 @@ $$
 **Geometric Interpretation:** The dot product is the scalar projection of $\vec{a}$ onto $\vec{b}$, scaled by the magnitude of $\vec{b}$. If $\vec{b}$ is a unit vector ($\|\vec{b}\| = 1$), the dot product is exactly equal to the scalar projection of $\vec{a}$ onto $\vec{b}$.
 
 ---
-## Code Implementation
-```cpp
-// Optional C++ snippet here
-```
-
----
 
 **Back to Question:** [[Q_Angle_Dot_Product]] | **Related Concepts:** [[02_Dot_Product]]
