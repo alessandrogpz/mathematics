@@ -5,8 +5,6 @@ module;
 
 export module matrices_basics;
 
-import vectors_basics;
-
 export namespace matrices {
     struct Matrix3x3
     {
