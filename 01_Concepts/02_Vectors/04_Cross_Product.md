@@ -34,6 +34,35 @@ $$
 - Curl fingers toward $\vec{b}$.
 - Thumb points in direction of $\vec{a} \times \vec{b}$ (see [[03_Coordinate_Systems]] for left-hand vs. right-hand systems).
 
+## Matrix Representation of Cross Product (Skew-Symmetric Matrix)
+
+A cross product of a fixed vector $\vec{a}$ with another vector $\vec{v}$ is a linear operation. Therefore, it can be represented as a matrix-vector multiplication using a **skew-symmetric matrix** (often denoted as $[\vec{a}]_\times$):
+
+$$
+\vec{a} \times \vec{v} = [\vec{a}]_\times \vec{v}
+$$
+
+### Skew-Symmetric Matrix Definition
+For a vector $\vec{a} = (a_x, a_y, a_z)$, the cross-product matrix $[\vec{a}]_\times$ is defined as:
+
+$$
+[\vec{a}]_\times = \begin{bmatrix} 0 & -a_z & a_y \\\\ a_z & 0 & -a_x \\\\ -a_y & a_x & 0 \end{bmatrix}
+$$
+
+Multiplying this matrix by a column vector $\vec{v} = \begin{bmatrix} v_x \\\\ v_y \\\\ v_z \end{bmatrix}$ yields:
+
+$$
+[\vec{a}]_\times \vec{v} = \begin{bmatrix} 0 & -a_z & a_y \\\\ a_z & 0 & -a_x \\\\ -a_y & a_x & 0 \end{bmatrix} \begin{bmatrix} v_x \\\\ v_y \\\\ v_z \end{bmatrix} = \begin{bmatrix} a_y v_z - a_z v_y \\\\ a_z v_x - a_x v_z \\\\ a_x v_y - a_y v_x \end{bmatrix}
+$$
+
+This matches the algebraic cross-product equation $\vec{a} \times \vec{v}$ exactly.
+
+### Why It's Useful
+In graphics programming, game engines, and physics engines, representing the cross product as a matrix multiplication is extremely powerful:
+* **Linearizing Operations:** It converts the vector-based cross-product operation into a standard $3 \times 3$ matrix multiplication.
+* **Combining Transformations:** Because it is a matrix, it can be combined with rotation, scale, or projection matrices using simple matrix multiplication.
+* **Rodrigues' Rotation Formula:** As used in 3D rotations, this skew-symmetric matrix represents the circular rotation step about an arbitrary axis $\vec{a}$ (in the term $[\vec{a}]_\times \sin\theta$).
+
 ---
 
 ## Code Implementation
