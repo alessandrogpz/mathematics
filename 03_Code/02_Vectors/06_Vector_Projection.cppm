@@ -55,4 +55,22 @@ export namespace vectors {
         return P;
     }
 
+    [[nodiscard]]
+    vector3 vecProj (const matrices::Matrix3x3& P, const vector3 a )
+    {
+        return P * a;
+    }
+
+    [[nodiscard]]
+    matrices::Matrix3x3 orthogonalRejMatrix (const matrices::Matrix3x3& P)
+    {
+        return matrices::Matrix3x3::identity() - P;
+    }
+
+    [[nodiscard]]
+    vector3 vecRej (const matrices::Matrix3x3& P_prep, const vector3 a)
+    {
+        return P_prep * a;
+    }
+
 }
