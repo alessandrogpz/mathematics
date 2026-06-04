@@ -83,133 +83,96 @@ $$
 ## 5. Matrix Representation of Vector Projection (Outer Product)
 
 In graphics programming and game physics engines, vector projections are almost always performed onto **unit vectors** representing directions.
-### Description
 
-The outer product is a linear algebra operation that multiplies a column vector by a row vector to construct a matrix. If you multiply a column vector of size $m$ by a row vector of size $n$, the outer product generates an $m \times n$ matrix.
+### The Outer Product
+The **outer product** (denoted as $\vec{a}\vec{b}^T$ or $\vec{a} \otimes \vec{b}$) is a linear algebra operation that multiplies a column vector by a row vector to construct a matrix.
 
-### Conceptual Meaning
+* **Conceptual Meaning:** While the dot product acts as a **compressor** (collapsing two vectors into a single scalar number based on their alignment), the outer product acts as an **expander** (generating a grid showing how every individual dimension of the first vector interacts with every individual dimension of the second vector).
 
-The outer product represents the complete interaction between every individual dimension of two vectors.
+---
 
-While the dot product acts as a compressor (collapsing two vectors into a single scalar number based on their alignment), the outer product acts as an expander. It maps out a grid showing exactly how each specific axis of the first vector scales against each specific axis of the second vector.
-### Formula
+> [!IMPORTANT]
+> **Outer Product vs. Projection Matrix**
+> * **Outer Product ($\vec{a}\vec{b}^T$):** A general operation that can be computed between *any* two vectors.
+> * **Projection Matrix ($\mathbf{P} = \hat{u}\hat{u}^T$):** A specific $3 \times 3$ matrix constructed by taking the outer product of a **unit vector** $\hat{u}$ with itself. This matrix has the unique property of being *idempotent* ($\mathbf{P}^2 = \mathbf{P}$), meaning applying it multiple times does not change the result.
 
-Assuming a unit vector $\hat{u}$ (where $\|\hat{u}\|^2 = 1$), the vector projection of a vector $\vec{a}$ onto $\hat{u}$ is:
+---
 
+### Derivation of the Projection Matrix
+For any vector $\vec{a}$ and a unit direction vector $\hat{u}$ (where $\|\hat{u}\|^2 = 1$), the vector projection is:
 $$
-\text{proj}_{\hat{u}}\vec{a} = \frac{\vec{a} \cdot \hat{u}}{\|\hat{u}\|^2}\hat{u} = (\vec{a} \cdot \hat{u})\hat{u}
+\text{proj}_{\hat{u}}\vec{a} = (\vec{a} \cdot \hat{u})\hat{u}
 $$
 
-By standard definition, the dot product of two $3 \times 1$ column vectors $\vec{a}$ and $\hat{u}$ can be rewritten as multiplying a row vector by a column vector:
-
+Using standard linear algebra, the dot product of two column vectors can be rewritten as multiplying a row vector by a column vector:
 $$
 (\vec{a} \cdot \hat{u}) = \hat{u}^T \vec{a}
 $$
 
-Substituting this expression back into the vector projection formula gives:
-
+Substituting this back into the projection formula:
 $$
 \text{proj}_{\hat{u}}\vec{a} = (\hat{u}^T \vec{a})\hat{u} = \hat{u}(\hat{u}^T \vec{a})
 $$
 
-Applying the **matrix associative property**, where $A(BC) = (AB)C$, we can group the terms to separate the vector $\vec{a}$:
-
+Applying the matrix associative property, we can regroup the terms to isolate the vector $\vec{a}$:
 $$
 \text{proj}_{\hat{u}}\vec{a} = (\hat{u}\hat{u}^T)\vec{a}
 $$
 
-Here, the isolated term $(\hat{u}\hat{u}^T)$ is an **outer product**—a $3 \times 1$ column vector multiplied by a $1 \times 3$ row vector:
-
+Where the isolated term $(\hat{u}\hat{u}^T)$ is the **Projection Matrix** $\mathbf{P}$:
 $$
-\hat{u}\hat{u}^T = \begin{bmatrix} u_x \\\\ u_y \\\\ u_z \end{bmatrix} \begin{bmatrix} u_x & u_y & u_z \end{bmatrix} = \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}
-$$
-
-This outer product is also denoted as the tensor product:
-
-$$
-\hat{u}\hat{u}^T = \hat{u} \otimes \hat{u}
+\mathbf{P} = \hat{u}\hat{u}^T = \begin{bmatrix} u_x \\\\ u_y \\\\ u_z \end{bmatrix} \begin{bmatrix} u_x & u_y & u_z \end{bmatrix} = \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}
 $$
 
-This $3 \times 3$ matrix represents the **projection operator** itself. Multiplying this matrix by any vector $\vec{a}$ projects it directly onto the direction of $\hat{u}$:
-
+Multiplying this matrix by any vector $\vec{a}$ projects it directly onto the direction of $\hat{u}$:
 $$
 \text{proj}_{\hat{u}}\vec{a} = \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}\vec{a}
 $$
 
-### Geometric Representation
-
-In 3D math and game engines, the outer product is primarily used to represent a **subspace** (like a line or a plane) in matrix form.
-
-When you calculate the outer product of a unit vector with itself ($\hat{u}\hat{u}^T$):
- 
- * The resulting matrix represents the 1D line defined by $\hat{u}$.
- * It acts as a geometric filter.
- * Multiplying any coordinate by this matrix strips away all spatial data perpendicular to the line, leaving only the exact shadow (projection) that rests on the line.
- 
 ---
 
 ## 6. Vector Rejection
 
 While vector projection finds the component of a vector $\vec{a}$ that is parallel to the direction of $\vec{b}$, **vector rejection** finds the component of $\vec{a}$ that is **perpendicular** (orthogonal) to $\vec{b}$.
 
-### Conceptual Understanding: "The Residual"
+### Conceptual Understanding: "The Sliding Component"
 Think of vector rejection as removing the parallel projection component from the original vector.
-*   **What it tells us:** It represents the part of $\vec{a}$ that acts completely orthogonal to $\vec{b}$.
-*   **Physical Meaning:** In game physics and graphics, if $\vec{b}$ is a surface normal vector, the vector projection is the component perpendicular to the surface (penetration), and the vector rejection is the component **parallel to the surface** (sliding direction along the plane).
+* **Physical Meaning:** In game physics (like collision response), if $\vec{b}$ is a surface normal vector, the vector projection is the component pushing *into* the surface (penetration), while the vector rejection is the component **parallel to the surface** (the sliding direction along the plane).
 
 ### Algebraic Formula
-Vector rejection (often denoted as $\text{rej}_{\vec{b}}\vec{a}$) is calculated by subtracting the vector projection from the original vector:
-
 $$
 \text{rej}_{\vec{b}}\vec{a} = \vec{a} - \text{proj}_{\vec{b}}\vec{a}
-$$
-
-Substituting the vector projection formula:
-
-$$
-\text{rej}_{\vec{b}}\vec{a} = \vec{a} - \left( \frac{\vec{a} \cdot \vec{b}}{\|\vec{b}\|^2} \right) \vec{b}
 $$
 
 ---
 
 ## 7. Matrix Representation of Vector Rejection (Orthogonal Rejection Operator)
 
-Just like vector projection can be expressed using a projection matrix, vector rejection can be expressed using an orthogonal rejection matrix.
+Just like vector projection, vector rejection can be represented as a matrix-vector multiplication using an **Orthogonal Rejection Matrix** $\mathbf{P}_{\perp}$.
 
-### Substitution & Derivation
-Assuming projection onto a unit vector $\hat{u}$ (where $\|\hat{u}\|^2 = 1$):
-1.  **Express Projection as Matrix Product:**
-    We substitute the projection matrix $(\hat{u}\hat{u}^T)$ into the rejection formula:
-    $$
-    \text{rej}_{\hat{u}}\vec{a} = \vec{a} - (\hat{u}\hat{u}^T)\vec{a}
-    $$
-2.  **Factor Out the Vector $\vec{a}$:**
-    Using the identity matrix $\mathbf{I}$, we rewrite $\vec{a} = \mathbf{I}\vec{a}$:
-    $$
-    \text{rej}_{\hat{u}}\vec{a} = \mathbf{I}\vec{a} - (\hat{u}\hat{u}^T)\vec{a}
-    $$
-    $$
-    \text{rej}_{\hat{u}}\vec{a} = (\mathbf{I} - \hat{u}\hat{u}^T)\vec{a}
-    $$
+### Derivation
+Assuming projection onto a unit vector $\hat{u}$:
+1. **Substitute the Projection Matrix:**
+   $$
+   \text{rej}_{\hat{u}}\vec{a} = \vec{a} - (\hat{u}\hat{u}^T)\vec{a}
+   $$
+2. **Factor Out the Vector $\vec{a}$:**
+   By inserting the identity matrix $\mathbf{I}$ (since $\vec{a} = \mathbf{I}\vec{a}$):
+   $$
+   \text{rej}_{\hat{u}}\vec{a} = \mathbf{I}\vec{a} - (\hat{u}\hat{u}^T)\vec{a} = (\mathbf{I} - \hat{u}\hat{u}^T)\vec{a}
+   $$
 
-Here, the isolated term $(\mathbf{I} - \hat{u}\hat{u}^T)$ is the **Orthogonal Rejection Matrix** (or projection operator onto the perpendicular subspace):
-
+Where the isolated term $(\mathbf{I} - \hat{u}\hat{u}^T)$ is the **Orthogonal Rejection Matrix** $\mathbf{P}_{\perp u}$:
 $$
 \mathbf{P}_{\perp u} = \mathbf{I} - \hat{u}\hat{u}^T
 $$
 
 ### Explicit Matrix Expansion
-Expanding $\mathbf{I} - \hat{u}\hat{u}^T$ into explicit $3 \times 3$ coordinate form:
-
 $$
-\mathbf{P}_{\perp u} = \begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}
+\mathbf{P}_{\perp u} = \begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{bmatrix} - \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix} = \begin{bmatrix} 1 - u_x^2 & -u_x u_y & -u_x u_z \\\\ -u_x u_y & 1 - u_y^2 & -u_y u_z \\\\ -u_x u_z & -u_y u_z & 1 - u_z^2 \end{bmatrix}
 $$
 
-$$
-\mathbf{P}_{\perp u} = \begin{bmatrix} 1 - u_x^2 & -u_x u_y & -u_x u_z \\\\ -u_x u_y & 1 - u_y^2 & -u_y u_z \\\\ -u_x u_z & -u_y u_z & 1 - u_z^2 \end{bmatrix}
-$$
-
-This $3 \times 3$ matrix represents the **orthogonal rejection operator**. Multiplying any vector $\vec{a}$ by this matrix strips away all component data parallel to $\hat{u}$, leaving only the perpendicular component lying in the subspace orthogonal to $\hat{u}$.
+Multiplying any vector $\vec{a}$ by this matrix filters out everything parallel to $\hat{u}$, leaving only the component orthogonal to $\hat{u}$.
 
 ---
 
