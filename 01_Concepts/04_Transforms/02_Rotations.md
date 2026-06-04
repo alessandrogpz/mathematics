@@ -197,8 +197,69 @@ $$
 
 ### Step 4: Matrix Formulation
 
-The projection $(\vec{v} \cdot \vec{a})\vec{a}$ and the cross product $(\vec{a} \times \vec{v})$ can be expressed by a 3x3 matrix multiplying the vector. The identity matrix is inserted so all terms have a 3x3 matrix.
+To convert the vector equation into matrix-vector products and isolate the final rotation matrix, we follow three steps:
 
+#### Sub-Step 1: Rearrange the Vector Equation
+First, distribute the $\cos\theta$ term in the middle of the first equation:
+$$
+\vec{v}' = (\vec{v} \cdot \vec{a})\vec{a} + \vec{v}\cos\theta - (\vec{v} \cdot \vec{a})\vec{a}\cos\theta + (\vec{a} \times \vec{v})\sin\theta
+$$
+
+Next, group the terms containing the dot product $(\vec{v} \cdot \vec{a})\vec{a}$ together:
+$$
+\vec{v}' = \vec{v}\cos\theta + \Big[ (\vec{v} \cdot \vec{a})\vec{a} - (\vec{v} \cdot \vec{a})\vec{a}\cos\theta \Big] + (\vec{a} \times \vec{v})\sin\theta
+$$
+
+Factor out $(\vec{v} \cdot \vec{a})\vec{a}$ to get the intermediate vector form:
+$$
+\vec{v}' = \vec{v}\cos\theta + (\vec{v} \cdot \vec{a})\vec{a}(1 - \cos\theta) + (\vec{a} \times \vec{v})\sin\theta
+$$
+
+#### Sub-Step 2: Convert to Matrix Notation
+To factor out the vector $\vec{v}$ so that a single rotation matrix can operate on it, convert each of the three terms into matrix-vector multiplications.
+
+1. **The $\cos\theta$ term:**  
+   Any vector multiplied by the identity matrix $\mathbf{I}$ remains unchanged ($\vec{v} = \mathbf{I}\vec{v}$).
+   $$
+   \vec{v}\cos\theta \implies \mathbf{I}\vec{v}\cos\theta
+   $$
+
+2. **The $(1 - \cos\theta)$ term (Dot Product to Outer Product):**  
+   The dot product of two column vectors can be written as a matrix multiplication using a transpose: $\vec{v} \cdot \vec{a} = \vec{a} \cdot \vec{v} = \vec{a}^T\vec{v}$. Substituting this back into the expression yields:
+   $$
+   (\vec{v} \cdot \vec{a})\vec{a} = \vec{a}(\vec{a}^T\vec{v}) = (\vec{a}\vec{a}^T)\vec{v}
+   $$
+   Here, $\vec{a}\vec{a}^T$ is a $3 \times 3$ outer-product matrix:
+   $$
+   \vec{a}\vec{a}^T = \begin{bmatrix} a_x^2 & a_x a_y & a_x a_z \\\\ a_x a_y & a_y^2 & a_y a_z \\\\ a_x a_z & a_y a_z & a_z^2 \end{bmatrix}
+   $$
+   Thus:
+   $$
+   (\vec{v} \cdot \vec{a})\vec{a}(1 - \cos\theta) \implies (\vec{a}\vec{a}^T)\vec{v}(1 - \cos\theta)
+   $$
+
+3. **The $\sin\theta$ term (Cross Product to Skew-Symmetric Matrix):**  
+   A cross product with a fixed vector $\vec{a}$ can be represented as a matrix-vector multiplication using the cross-product matrix notation $[\vec{a}]_\times$ (a skew-symmetric matrix):
+   $$
+   \vec{a} \times \vec{v} \implies [\vec{a}]_\times\vec{v}
+   $$
+   Where:
+   $$
+   [\vec{a}]_\times = \begin{bmatrix} 0 & -a_z & a_y \\\\ a_z & 0 & -a_x \\\\ -a_y & a_x & 0 \end{bmatrix}
+   $$
+
+#### Sub-Step 3: Combine the Terms
+Substitute the three matrix expressions back into the rearranged equation:
+$$
+\vec{v}' = \mathbf{I}\vec{v}\cos\theta + (\vec{a}\vec{a}^T)\vec{v}(1 - \cos\theta) + [\vec{a}]_\times\vec{v}\sin\theta
+$$
+
+Because $\vec{v}$ is now on the right side of every single term, you can cleanly factor it out to isolate the final $3 \times 3$ Rodrigues' rotation matrix:
+$$
+\vec{v}' = \Big( \mathbf{I}\cos\theta + (\vec{a}\vec{a}^T)(1 - \cos\theta) + [\vec{a}]_\times\sin\theta \Big) \vec{v}
+$$
+
+Writing this out in matrix component form:
 $$
 v' = \begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{bmatrix} \vec{v}\cos\theta + \begin{bmatrix} a_x^2 & a_x a_y & a_x a_z \\\\ a_x a_y & a_y^2 & a_y a_z \\\\ a_x a_z & a_y a_z & a_z^2 \end{bmatrix} \vec{v}(1 - \cos\theta) + \begin{bmatrix} 0 & -a_z & a_y \\\\ a_z & 0 & -a_x \\\\ -a_y & a_x & 0 \end{bmatrix} \vec{v}\sin\theta
 $$
