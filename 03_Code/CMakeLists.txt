@@ -12,7 +12,8 @@ else()
 endif()
 
 # Define the single main executable target
-add_executable(LinearAlgebra main.cpp)
+add_executable(LinearAlgebra main.cpp
+        04_Transforms/05_Skews.cppm)
 
 # Define target C++ module interface files (.cppm)
 target_sources(LinearAlgebra
@@ -35,4 +36,5 @@ target_sources(LinearAlgebra
       "04_Transforms/02_Rotations.cppm"
       "04_Transforms/03_Reflections.cppm"
       "04_Transforms/04_Scales.cppm"
+      "04_Transforms/05_Skews.cppm"
 )

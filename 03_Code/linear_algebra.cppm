@@ -17,3 +17,4 @@ export import transforms_matrices;
 export import transforms_rotations;
 export import transforms_reflections;
 export import transforms_scales;
+export import transforms_skews;
