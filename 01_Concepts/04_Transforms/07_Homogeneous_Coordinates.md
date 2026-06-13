@@ -19,6 +19,13 @@ This note will introduce homogeneous coordinates and the 4th dimension ($w$) as 
 
 ---
 
+## References & Resources
+
+*   **YouTube Video:** [Quick Understanding of Homogeneous Coordinates for Computer Graphics](https://www.youtube.com/watch?v=o-xwmTODTUI)
+*   **YouTube Video:** [4D Thinking for 3D Graphics](https://www.youtube.com/watch?v=naatDSe6v1c)
+
+---
+
 ## Code Implementation
 
 *   **C++ Source Code:** [[03_Code/04_Transforms/07_Homogeneous_Coordinates.cppm|07_Homogeneous_Coordinates.cppm]]

@@ -5,7 +5,7 @@ This note will bring everything together, showing how the $3 \times 3$ rotation,
 ---
 
 ## 1. Combining 3D Transforms with Translation
-[Show how the $3 \times 3$ matrices from notes 02 through 05 combine with translation (06) into a single $4 \times 4$ matrix]
+[Show how the $3 \times 3$ matrices from notes 02 through 05 and perspective projection (08) combine with translation (06) into a single $4 \times 4$ matrix]
 
 ---
 
@@ -43,4 +43,4 @@ $$
 
 ## Code Implementation
 
-*   **C++ Source Code:** [[03_Code/04_Transforms/08_Matrix_Composition_4x4.cppm|08_Matrix_Composition_4x4.cppm]]
+*   **C++ Source Code:** [[03_Code/04_Transforms/09_Matrix_Composition_4x4.cppm|09_Matrix_Composition_4x4.cppm]]

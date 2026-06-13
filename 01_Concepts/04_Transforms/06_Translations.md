@@ -164,6 +164,12 @@ $$
 
 ---
 
+## References & Resources
+
+*   **YouTube Video:** [Quick Understanding of Homogeneous Coordinates for Computer Graphics](https://www.youtube.com/watch?v=o-xwmTODTUI)
+*   **YouTube Video:** [4D Thinking for 3D Graphics](https://www.youtube.com/watch?v=naatDSe6v1c)
+
+---
 ## Code Implementation
 
 *   **C++ Source Code:** [[03_Code/04_Transforms/06_Translations.cppm|06_Translations.cppm]]
