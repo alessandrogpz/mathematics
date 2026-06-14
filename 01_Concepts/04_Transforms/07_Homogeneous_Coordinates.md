@@ -24,17 +24,19 @@ Because of this property, a single point in 3D Euclidean space corresponds to an
 
 ---
 
-## 2. The Projection Screen Analogy (The $w = 1$ Hyperplane)
+## 2. The Projection Screen Analogy (The $w = 1$ Plane)
 
-To convert a 4D homogeneous coordinate back into a 3D Euclidean coordinate, we project the 4D ray onto the 3D hyperplane where $w = 1$. 
+To visualize this projection, we can look at a lower-dimensional example: projecting a 3D homogeneous coordinate back into a 2D Euclidean coordinate. 
 
-Geometrically, this is the equivalent of finding where the ray from the 4D origin intersects the $w = 1$ "screen." This process is called **Homogeneous Division** (or perspective division):
+In this scenario, our 2D Euclidean world is represented as the flat plane $w = 1$ embedded in 3D space. Any 3D homogeneous coordinate $[x, y, w]^T$ (where $w \neq 0$) represents a ray (line) passing through the origin in 3D space.
+
+Geometrically, converting back to 2D Euclidean coordinates is the equivalent of finding where this 3D ray intersects the $w = 1$ "screen" (plane). This process is called **Homogeneous Division** (or perspective division):
 
 $$
-\begin{bmatrix} x \\\\ y \\\\ z \\\\ w \end{bmatrix} \xrightarrow{\text{Divide by } w} \begin{bmatrix} x/w \\\\ y/w \\\\ z/w \\\\ 1 \end{bmatrix}
+\begin{bmatrix} x \\\\ y \\\\ w \end{bmatrix} \xrightarrow{\text{Divide by } w} \begin{bmatrix} x/w \\\\ y/w \\\\ 1 \end{bmatrix}
 $$
 
-Once $w = 1$, the first three components $[x/w, y/w, z/w]^T$ represent the standard 3D Euclidean coordinates of the point.
+Once $w = 1$, the first two components $[x/w, y/w]^T$ represent the standard 2D Euclidean coordinates of the point on our projection plane.
 
 <center>
 	<img src="../../98_Assets/Concepts/homogeneous_projection.webp" width="500" height="350">
