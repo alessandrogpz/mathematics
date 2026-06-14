@@ -100,12 +100,20 @@ Depending on how you interpret the vectors it acts upon, this matrix has two ide
    \begin{bmatrix} 1 & 0 & T_x \\\\ 0 & 1 & T_y \\\\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\\\ y \\\\ 1 \end{bmatrix} = \begin{bmatrix} x + T_x \\\\ y + T_y \\\\ 1 \end{bmatrix}
    $$
 
+   <center>
+   	<img src="../../98_Assets/Concepts/translation_2d_homogeneous.webp" width="500" height="350">
+   </center>
+
 2. **In 3D Euclidean Coordinates:**
    It represents a **3D Shear (Skew)** transformation along the $xy$-plane, where the shear displacement is proportional to the $z$ coordinate:
    $$
    \begin{bmatrix} 1 & 0 & T_x \\\\ 0 & 1 & T_y \\\\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\\\ y \\\\ z \end{bmatrix} = \begin{bmatrix} x + T_x z \\\\ y + T_y z \\\\ z \end{bmatrix}
    $$
    Here, points are shifted parallel to the $x$-axis by $T_x \cdot z$ and parallel to the $y$-axis by $T_y \cdot z$.
+
+   <center>
+   	<img src="../../98_Assets/Concepts/shear_3d_euclidean.webp" width="500" height="350">
+   </center>
 
 ### The Equivalence
 This equivalence is the fundamental secret of homogeneous coordinates: **a translation in $N$ dimensions is mathematically identical to a shear transformation in $(N+1)$-dimensional space.**
