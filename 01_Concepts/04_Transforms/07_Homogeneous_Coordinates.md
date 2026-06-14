@@ -24,7 +24,7 @@ Because of this property, a single point in 3D Euclidean space corresponds to an
 
 ---
 
-## 2. The Projection Screen Analogy (The $z = 1$ Plane)
+## 2. The Projection Screen Analogy (The $w = 1$ Plane)
 
 With homogeneous coordinates, we can represent $n$-dimensional points using $n+1$ components. For example, we can map a 3D space to a 4-dimensional projective space ($\mathbb{P}^3$), or a 2D space to a 3-dimensional projective space ($\mathbb{P}^2$), which is much easier to visualize.
 
