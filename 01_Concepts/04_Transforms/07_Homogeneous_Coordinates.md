@@ -24,28 +24,42 @@ Because of this property, a single point in 3D Euclidean space corresponds to an
 
 ---
 
-## 2. The Projection Screen Analogy (The $w = 1$ Plane)
+## 2. The Projection Screen Analogy (The $z = 1$ Plane)
 
-To visualize this projection, we can look at a lower-dimensional example: projecting a 3D homogeneous coordinate back into a 2D Euclidean coordinate. 
+With homogeneous coordinates, we can represent $n$-dimensional points using $n+1$ components. For example, we can map a 3D space to a 4-dimensional projective space ($\mathbb{P}^3$), or a 2D space to a 3-dimensional projective space ($\mathbb{P}^2$), which is much easier to visualize.
+
+> [!NOTE]
+> Normally, when projecting 3D space onto a 2D screen, we use 4D homogeneous coordinates with $w$ as the extra component. We are using $z$ as the extra component here only because it represents a 2D space embedded inside a 3D coordinate system, which is much easier to visualize.
+
+Let's assume we have a 2D space containing a green square object $v$. Any point on $v$ can be represented using standard 2D Euclidean coordinates with $x$ and $y$ components:
 
 <center>
 	<img src="../../98_Assets/Concepts/homogeneous_projection_2d_plane.webp" width="400" height="350">
 </center>
 
-In this scenario, our 2D Euclidean world is represented as the flat plane $w = 1$ embedded in 3D space. Any 3D homogeneous coordinate $[x, y, w]^T$ (where $w \neq 0$) represents a ray (line) passing through the origin in 3D space.
+In a homogeneous coordinate system, we can observe this 2D plane as a projection in 3D space.
+
+Here, our 2D Euclidean world is represented as the flat plane $z = 1$ embedded in 3D space (where the $z$-axis acts as our homogeneous component, which is typically labeled $w$ in general projective systems). All points of the object $v$ can still be represented by $x$ and $y$, but they are now at the depth coordinate $z = 1$. 
+
+For any given point $v$ in this plane:
+
+$$
+\vec{v} = \begin{bmatrix} x \\\\ y \\\\ z \end{bmatrix} \quad \text{and since } z = 1: \quad \vec{v} = \begin{bmatrix} x \\\\ y \\\\ 1 \end{bmatrix}
+$$
+
+Any 3D homogeneous coordinate $[x, y, z]^T$ represents a ray (line) passing through the origin in 3D space:
 
 <center>
 	<img src="../../98_Assets/Concepts/homogeneous_projection.webp" width="400" height="400">
 </center>
 
-
-Geometrically, converting back to 2D Euclidean coordinates is the equivalent of finding where this 3D ray intersects the $w = 1$ "screen" (plane). This process is called **Homogeneous Division** (or perspective division):
+Geometrically, converting any point in this 3D projective space back onto our 2D plane requires us to scale it back to the 2D $x,y$ plane we defined. We accomplish this by dividing each of the vector's components by its $z$ component. This process is called **Homogeneous Division** (or perspective division):
 
 $$
-\begin{bmatrix} x \\\\ y \\\\ w \end{bmatrix} \xrightarrow{\text{Divide by } w} \begin{bmatrix} x/w \\\\ y/w \\\\ 1 \end{bmatrix}
+\begin{bmatrix} x \\\\ y \\\\ z \end{bmatrix} \xrightarrow{\text{Divide by } z} \begin{bmatrix} x/z \\\\ y/z \\\\ 1 \end{bmatrix}
 $$
 
-Once $w = 1$, the first two components $[x/w, y/w]^T$ represent the standard 2D Euclidean coordinates of the point on our projection plane.
+Once $z = 1$, the first two components $[x/z, y/z]^T$ represent the standard 2D Euclidean coordinates of the point on our projection plane. In our example, $z$ is already $1$, but this division mathematically projects any point along the ray (where $z \neq 1$) back onto the plane.
 
 ---
 
