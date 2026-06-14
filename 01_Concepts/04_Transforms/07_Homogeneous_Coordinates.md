@@ -11,7 +11,7 @@ Homogeneous coordinates represent $n$-dimensional points using $n+1$ components,
 In 3D projective space $\mathbb{P}^3$, a point is defined by a 4-component vector:
 
 $$
-\vec{p} = \begin{bmatrix} x \\ y \\ z \\ w \end{bmatrix} \quad (\text{where } w \neq 0)
+\vec{p} = \begin{bmatrix} x \cr y \cr z \cr w \end{bmatrix} \quad (\text{where } w \neq 0)
 $$
 
 Unlike Euclidean space, homogeneous coordinates are characterized by **scale invariance**. Multiplying the entire coordinate vector by any non-zero scalar $k$ does not change the geometric point it represents:
