@@ -34,7 +34,7 @@ $$
 \mathbf{M}\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \end{bmatrix} = \vec{a}, \quad \mathbf{M}\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \end{bmatrix} = \vec{b}, \quad \mathbf{M}\begin{bmatrix} 0 \\\\ 0 \\\\ 1 \end{bmatrix} = \vec{c} \tag{2.3}
 $$
 
-For any arbitrary vector $\vec{v} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}$, the transformation $\mathbf{M}\vec{v}$ represents a **linear combination** of these new basis axes:
+For any arbitrary vector $\vec{v} = \begin{bmatrix} v_x \\\\ v_y \\\\ v_z \end{bmatrix}$, the transformation $\mathbf{M}\vec{v}$ represents a **linear combination** of these new basis axes:
 
 $$
 \mathbf{M}\vec{v} = v_x\vec{a} + v_y\vec{b} + v_z\vec{c} \tag{2.4}

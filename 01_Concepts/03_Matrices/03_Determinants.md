@@ -3,14 +3,14 @@
 The determinant is a scalar value that can be thought of as a "magnitude" for a square matrix. A matrix has an inverse if and only if its determinant is non-zero.
 
 ## 2x2 Matrix
-For $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$:
+For $A = \begin{bmatrix} a & b \\\\ c & d \end{bmatrix}$:
 
 $$
 \det(A) = ad - bc
 $$
 
 ## 3x3 Matrix (Rule of Sarrus)
-For $A = \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$:
+For $A = \begin{bmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \end{bmatrix}$:
 
 $$
 \det(A) = (aei + bfg + cdh) - (ceg + bdi + afh)

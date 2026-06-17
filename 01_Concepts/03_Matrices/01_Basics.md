@@ -23,7 +23,7 @@ The transpose of a matrix $M$, denoted as $M^T$, is created by swapping its rows
 - $(M^T)_{ij} = M_{ji}$
 
 **Example:**
-If $A = \begin{bmatrix} a & b & c \\ d & e & f \end{bmatrix}$, then $A^T = \begin{bmatrix} a & d \\ b & e \\ c & f \end{bmatrix}$
+If $A = \begin{bmatrix} a & b & c \\\\ d & e & f \end{bmatrix}$, then $A^T = \begin{bmatrix} a & d \\\\ b & e \\\\ c & f \end{bmatrix}$
 
 ## Identity Matrix
 The identity matrix $I_n$ is a square ($n \times n$) matrix with ones on the main diagonal and zeros elsewhere.
