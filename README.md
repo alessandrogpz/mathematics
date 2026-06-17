@@ -1,7 +1,5 @@
 # Linear Algebra Study Repository
 
-Welcome to your personal Linear Algebra study repository and knowledge base! 
-
 This repository is designed to integrate seamlessly with **Obsidian**, utilizing cross-links (`[[Internal Link]]`) and tags to build a visual, highly connected graph of theoretical concepts, programming implementations, and practice exercises.
 
 ---
