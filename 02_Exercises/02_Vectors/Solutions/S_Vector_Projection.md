@@ -16,20 +16,26 @@ This solution note provides the mathematical derivations, calculations, and conc
 
 #### 1. Scalar Projection
 The scalar projection $\text{comp}_{\vec{n}}\vec{v}$ of $\vec{v}$ onto $\vec{n}$ is computed as:
+
 $$
 \text{comp}_{\vec{n}}\vec{v} = \frac{\vec{v} \cdot \vec{n}}{\|\vec{n}\|}
 $$
+
 Calculate the dot product:
+
 $$
 \vec{v} \cdot \vec{n} = 4(0) + (-3)(1) + 1(0) = -3
 $$
+
 Since $\|\vec{n}\| = 1$, the scalar projection is:
+
 $$
 \text{comp}_{\vec{n}}\vec{v} = \frac{-3}{1} = -3
 $$
 
 #### 2. Vector Projection
 Since $\vec{n}$ is a unit vector, the vector projection $\text{proj}_{\vec{n}}\vec{v}$ is:
+
 $$
 \text{proj}_{\vec{n}}\vec{v} = \left(\text{comp}_{\vec{n}}\vec{v}\right)\vec{n} = -3 \begin{bmatrix} 0 \\\\ 1 \\\\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\\\ -3 \\\\ 0 \end{bmatrix}
 $$
@@ -63,9 +69,11 @@ $$
 
 Where:
 *   $\vec{v}_{\text{normal}}$ is perpendicular to the surface (parallel to $\vec{n}$). This is exactly the vector projection:
+    
     $$
     \vec{v}_{\text{normal}} = \text{proj}_{\vec{n}}\vec{v}
     $$
+    
 *   $\vec{v}_{\text{parallel}}$ is parallel to the surface (perpendicular to $\vec{n}$). 
 
 To isolate this parallel component (the velocity vector lying along the surface itself), we subtract the vector projection from the original vector:

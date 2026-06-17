@@ -71,12 +71,14 @@ $$
 > The transposition is required to satisfy the algebraic properties of Laplace expansion:
 > 1.  **Row and Cofactor Dot Product:** If you multiply elements of row $i$ by the cofactors of the **same** row, you get the determinant:
 >     
+
 $$
 \sum_{k=1}^n a_{ik} C_{ik} = \det(A)
 $$
 
 > 2.  **Dummy Row Expansion:** If you multiply elements of row $i$ by the cofactors of a **different** row $j$ ($i \neq j$), the result is always $0$:
 >     
+
 $$
 \sum_{k=1}^n a_{ik} C_{jk} = 0
 $$
@@ -86,6 +88,7 @@ $$
 > 
 > Therefore:
 > 
+
 $$
 A \cdot C^T = \det(A)I \implies A \cdot \left(\frac{1}{\det(A)} C^T\right) = I
 $$

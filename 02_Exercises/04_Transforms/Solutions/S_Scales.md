@@ -21,18 +21,25 @@ $$
 
 To represent this transformation in matrix form, we decompose the input vector $\vec{v}$ into:
 *   **Parallel Component ($\vec{v}_{\parallel a}$):** The projection of $\vec{v}$ onto the unit vector $\vec{a}$:
+    
     $$
     \vec{v}_{\parallel a} = \text{proj}_{\vec{a}}\vec{v} = (\vec{v} \cdot \vec{a})\vec{a}
     $$
+    
     Using matrix notation for the dot product of $3 \times 1$ column vectors $\vec{v}$ and $\vec{a}$:
+    
     $$
     \vec{v} \cdot \vec{a} = \vec{a}^T\vec{v}
     $$
+    
     Substituting this back into the projection formula:
+    
     $$
     \vec{v}_{\parallel a} = (\vec{a}^T\vec{v})\vec{a} = \vec{a}(\vec{a}^T\vec{v}) = (\vec{a}\vec{a}^T)\vec{v}
     $$
+    
 *   **Perpendicular Component ($\vec{v}_{\perp a}$):** The component orthogonal to the scaling direction $\vec{a}$:
+    
     $$
     \vec{v}_{\perp a} = \vec{v} - \vec{v}_{\parallel a} = \mathbf{I}\vec{v} - (\vec{a}\vec{a}^T)\vec{v} = (\mathbf{I} - \vec{a}\vec{a}^T)\vec{v}
     $$
@@ -112,9 +119,11 @@ $$
 $$
 
 **Geometric Observation:** The resulting vector $\vec{v}'$ is exactly equal to the input vector $\vec{v}$. This is because the input vector $\vec{v}$ lies completely perpendicular (orthogonal) to the scaling direction $\vec{a}$, which we verify by their dot product:
+
 $$
 \vec{v} \cdot \vec{a} = 4(0) + 1\left(\frac{\sqrt{2}}{2}\right) - 1\left(\frac{\sqrt{2}}{2}\right) = 0
 $$
+
 Since $\vec{v}$ is perpendicular to $\vec{a}$, scaling space along $\vec{a}$ leaves $\vec{v}$ entirely unaffected.
 
 ---
@@ -124,23 +133,31 @@ Since $\vec{v}$ is perpendicular to $\vec{a}$, scaling space along $\vec{a}$ lea
 We verify this result by decomposing the vector $\vec{v}$ into parallel and perpendicular components relative to the unit vector $\vec{a}$:
 
 *   **Parallel Component ($\vec{v}_{\parallel a}$):**
+    
     $$
     \vec{v}_{\parallel a} = (\vec{v} \cdot \vec{a})\vec{a}
     $$
+    
     Since the dot product $\vec{v} \cdot \vec{a} = 0$:
+    
     $$
     \vec{v}_{\parallel a} = 0 \cdot \vec{a} = \begin{bmatrix} 0 \\\\ 0 \\\\ 0 \end{bmatrix}
     $$
+    
 *   **Perpendicular Component ($\vec{v}_{\perp a}$):**
+    
     $$
     \vec{v}_{\perp a} = \vec{v} - \vec{v}_{\parallel a} = \begin{bmatrix} 4 \\\\ 1 \\\\ -1 \end{bmatrix} - \begin{bmatrix} 0 \\\\ 0 \\\\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\\\ 1 \\\\ -1 \end{bmatrix}
     $$
 
 *   **Decomposition Verification:**
     Applying the scale factor $s = 3$ to only the parallel component and adding the perpendicular component:
+    
     $$
     \vec{v}' = s\vec{v}_{\parallel a} + \vec{v}_{\perp a}
     $$
+    
+    
     $$
     \vec{v}' = 3\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \end{bmatrix} + \begin{bmatrix} 4 \\\\ 1 \\\\ -1 \end{bmatrix} = \begin{bmatrix} 4 \\\\ 1 \\\\ -1 \end{bmatrix}
     $$
@@ -161,6 +178,7 @@ This perfectly matches the matrix multiplication result from Step 2!
     In the 2D plane orthogonal to $\vec{a}$, space is completely untouched—meaning the scale factors in the two perpendicular directions are both exactly $1$.
 *   **Net Volume Change:**
     The net change in volume for any 3D region is the product of the scaling factors along three mutually perpendicular axes (the scaling axis $\vec{a}$ and two orthogonal axes):
+    
     $$
     \text{Volume scaling factor} = s \cdot 1 \cdot 1 = s
     $$
@@ -191,9 +209,11 @@ $$
     Setting $s = 0$ completely flattens (projects) all 3D vectors onto the 2D plane passing through the origin perpendicular to $\vec{a}$. 
 *   **Relationship to Projections:**
     This matrix is exactly the **Orthogonal Rejection Matrix** (often denoted as $\text{Rej}_{\vec{a}}\vec{v} = \mathbf{I} - \vec{a}\vec{a}^T$). Geometrically, it represents an orthogonal projection onto the plane perpendicular to the normal vector $\vec{a}$:
+    
     $$
     \vec{v}' = 0\vec{v}_{\parallel a} + \vec{v}_{\perp a} = \vec{v}_{\perp a} = \text{proj}_{\perp a}\vec{v}
     $$
+    
     This elegantly unifies arbitrary scaling with **vector projections**.
 
 ---
@@ -214,9 +234,11 @@ $$
 
 *   **Geometric Transformation:**
     Setting $s = -1$ negates (reverses) only the component of a vector that lies parallel to the axis $\vec{a}$ while leaving the perpendicular component completely untouched:
+    
     $$
     \vec{v}' = -1\vec{v}_{\parallel a} + \vec{v}_{\perp a} = \vec{v}_{\perp a} - \vec{v}_{\parallel a}
     $$
+    
 *   **Relationship to Reflections:**
     This formula is identical to the **Plane Reflection Matrix** $\mathbf{M}_{\text{reflect}}(\vec{a})$ which mirrors vectors across the plane passing through the origin perpendicular to the normal vector $\vec{a}$. 
     This reveals that a mirror reflection is simply a **special case of non-uniform scaling** where the scale factor in the direction orthogonal to the mirror plane is exactly $-1$.

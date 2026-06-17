@@ -116,18 +116,25 @@ If we perform two plane reflections consecutively across the exact same plane, t
 
 **Algebraic Proof:**
 Using the definition $\mathbf{M}_{\text{reflect}}(\vec{a}) = \mathbf{I} - 2\vec{a}\vec{a}^T$, we compute the product:
+
 $$
 \mathbf{M}_{\text{reflect}}(\vec{a})\mathbf{M}_{\text{reflect}}(\vec{a}) = (\mathbf{I} - 2\vec{a}\vec{a}^T)(\mathbf{I} - 2\vec{a}\vec{a}^T)
 $$
+
 Expanding the terms:
+
 $$
 \mathbf{M}_{\text{reflect}}(\vec{a})\mathbf{M}_{\text{reflect}}(\vec{a}) = \mathbf{I}^2 - 2\vec{a}\vec{a}^T - 2\vec{a}\vec{a}^T + 4(\vec{a}\vec{a}^T)(\vec{a}\vec{a}^T)
 $$
+
 Since $\mathbf{I}^2 = \mathbf{I}$ and $(\vec{a}\vec{a}^T)(\vec{a}\vec{a}^T) = \vec{a}(\vec{a}^T\vec{a})\vec{a}^T$, and because $\vec{a}$ is a unit vector ($\vec{a}^T\vec{a} = 1$), we have:
+
 $$
 (\vec{a}\vec{a}^T)(\vec{a}\vec{a}^T) = \vec{a}(1)\vec{a}^T = \vec{a}\vec{a}^T
 $$
+
 Substituting this back in:
+
 $$
 \mathbf{M}_{\text{reflect}}(\vec{a})\mathbf{M}_{\text{reflect}}(\vec{a}) = \mathbf{I} - 4\vec{a}\vec{a}^T + 4\vec{a}\vec{a}^T = \mathbf{I}
 $$
@@ -144,19 +151,25 @@ $$
 
 **Algebraic Proof:**
 Using the matrix formulas:
+
 $$
 \mathbf{M}_{\text{reflect}}(\vec{a})\mathbf{M}_{\text{invol}}(\vec{a}) = (\mathbf{I} - 2\vec{a}\vec{a}^T)(2\vec{a}\vec{a}^T - \mathbf{I})
 $$
+
 Expanding the product:
+
 $$
 = 2\vec{a}\vec{a}^T - \mathbf{I} - 4(\vec{a}\vec{a}^T)(\vec{a}\vec{a}^T) + 2\vec{a}\vec{a}^T
 $$
+
 Using $(\vec{a}\vec{a}^T)(\vec{a}\vec{a}^T) = \vec{a}\vec{a}^T$:
+
 $$
 = 2\vec{a}\vec{a}^T - \mathbf{I} - 4\vec{a}\vec{a}^T + 2\vec{a}\vec{a}^T = -\mathbf{I}
 $$
 
 For our specific case:
+
 $$
 \begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \end{bmatrix} \begin{bmatrix} -1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} -1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \end{bmatrix} = -\mathbf{I}
 $$

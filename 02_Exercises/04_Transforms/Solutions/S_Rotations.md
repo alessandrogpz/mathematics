@@ -22,11 +22,13 @@ $$
 #### Step A: Rotating the $x$-component basis vector ($v_x\vec{i}$)
 Rotating positive $\vec{i}$ by an angle $\theta$ counterclockwise in the $zx$-plane sweeps it into the first quadrant between $\vec{i}$ and $\vec{k}$:
 *   
+
 $$
 \cos\theta = \frac{\text{Adjacent}}{\text{Hypotenuse}} \implies \text{Adjacent} = v_x\cos\theta \quad (\text{along } \vec{i})
 $$
 
 *   
+
 $$
 \sin\theta = \frac{\text{Opposite}}{\text{Hypotenuse}} \implies \text{Opposite} = v_x\sin\theta \quad (\text{along } \vec{k})
 $$
@@ -40,11 +42,13 @@ $$
 #### Step B: Rotating the $z$-component basis vector ($v_z\vec{k}$)
 Rotating positive $\vec{k}$ by an angle $\theta$ counterclockwise sweeps it into the second quadrant, landing it between $\vec{k}$ and $-\vec{i}$:
 *   
+
 $$
 \cos\theta = \frac{\text{Adjacent}}{\text{Hypotenuse}} \implies \text{Adjacent} = v_z\cos\theta \quad (\text{along } \vec{k})
 $$
 
 *   
+
 $$
 \sin\theta = \frac{\text{Opposite}}{\text{Hypotenuse}} \implies \text{Opposite} = v_z\sin\theta \quad (\text{along } -\vec{i})
 $$

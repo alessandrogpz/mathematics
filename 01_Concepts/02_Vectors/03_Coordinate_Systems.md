@@ -4,6 +4,7 @@ In 3D space, the orientation of the axes ($x, y, z$) can follow one of two conve
 
 ## Axis Orientation: Three-Finger Rule (Standard)
 To know which axis is which, you use your right hand and follow the **Cyclic Order**:
+
 $$
 X \rightarrow Y \rightarrow Z \rightarrow X
 $$

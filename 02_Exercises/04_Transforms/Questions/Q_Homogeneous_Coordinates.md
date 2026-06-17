@@ -7,9 +7,11 @@ tags: [exercise, question, homogeneous-coordinates, projective-space, projective
 
 ## Part 1: Calculation and Conversions
 1. **Homogeneous to Euclidean Conversion:** Convert the following 4D homogeneous coordinates to 3D Euclidean coordinates:
+   
    $$
    \vec{a}_h = \begin{bmatrix} 4 \\\\ -8 \\\\ 12 \\\\ 2 \end{bmatrix}, \quad \vec{b}_h = \begin{bmatrix} -2 \\\\ 4 \\\\ -6 \\\\ -1 \end{bmatrix}, \quad \vec{c}_h = \begin{bmatrix} 5 \\\\ 3 \\\\ -1 \\\\ 0 \end{bmatrix}
    $$
+   
    Verify if $\vec{a}_h$ and $\vec{b}_h$ represent the same point in 3D Euclidean space, and describe what $\vec{c}_h$ represents geometrically.
 
 2. **Euclidean to Homogeneous Representation:** For the 3D Euclidean point $P(3, -2, 5)$, write three distinct 4D homogeneous coordinate vectors that represent it.

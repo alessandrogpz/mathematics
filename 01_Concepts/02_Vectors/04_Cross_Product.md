@@ -49,22 +49,26 @@ $$
 
 #### 1. The Standard Cross Product
 Let's define two column vectors:
+
 $$
 \vec{a} = \begin{bmatrix} a_x \\\\ a_y \\\\ a_z \end{bmatrix} , \quad \vec{v} = \begin{bmatrix} v_x \\\\ v_y \\\\ v_z \end{bmatrix}
 $$
 
 Using standard linear algebra, the algebraic expansion of the cross product $\vec{a} \times \vec{v}$ yields the vector:
+
 $$
 \vec{a} \times \vec{v} = \begin{bmatrix} a_y v_z - a_z v_y \\\\ a_z v_x - a_x v_z \\\\ a_x v_y - a_y v_x \end{bmatrix}
 $$
 
 #### 2. The Matrix Multiplication Equivalency
 Now, let's construct the cross-product matrix $[\vec{a}]_\times$ and multiply it by the column vector $\vec{v}$ using standard row-by-column multiplication:
+
 $$
 [\vec{a}]_\times \vec{v} = \begin{bmatrix} 0 & -a_z & a_y \\\\ a_z & 0 & -a_x \\\\ -a_y & a_x & 0 \end{bmatrix} \begin{bmatrix} v_x \\\\ v_y \\\\ v_z \end{bmatrix}
 $$
 
 Performing the row-by-column multiplication:
+
 $$
 [\vec{a}]_\times \vec{v} = \begin{bmatrix} (0 \cdot v_x) + (-a_z \cdot v_y) + (a_y \cdot v_z) \\\\ (a_z \cdot v_x) + (0 \cdot v_y) + (-a_x \cdot v_z) \\\\ (-a_y \cdot v_x) + (a_x \cdot v_y) + (0 \cdot v_z) \end{bmatrix} = \begin{bmatrix} a_y v_z - a_z v_y \\\\ a_z v_x - a_x v_z \\\\ a_x v_y - a_y v_x \end{bmatrix}
 $$

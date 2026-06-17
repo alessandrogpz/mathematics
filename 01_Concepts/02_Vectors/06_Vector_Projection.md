@@ -100,31 +100,37 @@ The **outer product** (denoted as $\vec{a}\vec{b}^T$ or $\vec{a} \otimes \vec{b}
 
 ### Derivation of the Projection Matrix
 For any vector $\vec{a}$ and a unit direction vector $\hat{u}$ (where $\|\hat{u}\|^2 = 1$), the vector projection is:
+
 $$
 \text{proj}_{\hat{u}}\vec{a} = (\vec{a} \cdot \hat{u})\hat{u}
 $$
 
 Using standard linear algebra, the dot product of two column vectors can be rewritten as multiplying a row vector by a column vector:
+
 $$
 (\vec{a} \cdot \hat{u}) = \hat{u}^T \vec{a}
 $$
 
 Substituting this back into the projection formula:
+
 $$
 \text{proj}_{\hat{u}}\vec{a} = (\hat{u}^T \vec{a})\hat{u} = \hat{u}(\hat{u}^T \vec{a})
 $$
 
 Applying the matrix associative property, we can regroup the terms to isolate the vector $\vec{a}$:
+
 $$
 \text{proj}_{\hat{u}}\vec{a} = (\hat{u}\hat{u}^T)\vec{a}
 $$
 
 Where the isolated term $(\hat{u}\hat{u}^T)$ is the **Projection Matrix** $\mathbf{P}$:
+
 $$
 \mathbf{P} = \hat{u}\hat{u}^T = \begin{bmatrix} u_x \\\\ u_y \\\\ u_z \end{bmatrix} \begin{bmatrix} u_x & u_y & u_z \end{bmatrix} = \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}
 $$
 
 Multiplying this matrix by any vector $\vec{a}$ projects it directly onto the direction of $\hat{u}$:
+
 $$
 \text{proj}_{\hat{u}}\vec{a} = \begin{bmatrix} u_x^2 & u_x u_y & u_x u_z \\\\ u_x u_y & u_y^2 & u_y u_z \\\\ u_x u_z & u_y u_z & u_z^2 \end{bmatrix}\vec{a}
 $$
@@ -153,16 +159,20 @@ Just like vector projection, vector rejection can be represented as a matrix-vec
 ### Derivation
 Assuming projection onto a unit vector $\hat{u}$:
 1. **Substitute the Projection Matrix:**
+   
    $$
    \text{rej}_{\hat{u}}\vec{a} = \vec{a} - (\hat{u}\hat{u}^T)\vec{a}
    $$
+   
 2. **Factor Out the Vector $\vec{a}$:**
    By inserting the identity matrix $\mathbf{I}$ (since $\vec{a} = \mathbf{I}\vec{a}$):
+   
    $$
    \text{rej}_{\hat{u}}\vec{a} = \mathbf{I}\vec{a} - (\hat{u}\hat{u}^T)\vec{a} = (\mathbf{I} - \hat{u}\hat{u}^T)\vec{a}
    $$
 
 Where the isolated term $(\mathbf{I} - \hat{u}\hat{u}^T)$ is the **Orthogonal Rejection Matrix** $\mathbf{P}_{\perp u}$:
+
 $$
 \mathbf{P}_{\perp u} = \mathbf{I} - \hat{u}\hat{u}^T
 $$
