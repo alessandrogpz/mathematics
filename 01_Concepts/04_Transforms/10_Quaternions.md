@@ -115,22 +115,36 @@ As the 4D hypersphere rotates:
 
 ---
 
-## 2. Algebraic Representation
+## 2. Algebraic Representation & Operations
 
-A quaternion $q$ is defined as the sum of a real scalar part and three imaginary vector parts:
+Quaternions ($\mathbb{H}$) extend 2D complex numbers into 4D space. Algebraically, they consist of a real scalar component and a 3D imaginary vector component.
 
-**Scalar-Vector Form**
+### Scalar-Vector Representation
+A quaternion $q$ is represented as:
 
 $$
 q = w + xi + yj + zk \quad \text{or} \quad q = s + \vec{v}
 $$
 
 Where:
-*   $w$ (or $s$) is a real number representing the **scalar part**.
-*   $x, y, z$ are real numbers, and $\vec{v} = [x, y, z]^T$ is the **vector part** representing the three imaginary dimensions.
+*   $s$ (or $w$) is a real scalar representing the **scalar part**.
+*   $\vec{v} = [x, y, z]^T$ is a 3D vector representing the **vector part** along the three orthogonal imaginary axes $i, j, k$.
 
-### Fundamental Identities
-The three imaginary dimensions are mutually perpendicular to the real axis and to each other. They satisfy the fundamental Hamilton relations:
+---
+
+### Basic Operations
+
+#### 1. Addition
+Quaternion addition is performed component-wise:
+
+$$
+q_1 + q_2 = (s_1 + s_2) + (\vec{v}_1 + \vec{v}_2)
+$$
+
+This operation is both associative and commutative.
+
+#### 2. Multiplication
+Quaternion multiplication is **non-commutative** (order of multiplication matters). It is defined by Hamilton's fundamental identities:
 
 **(2.9)**
 
@@ -138,18 +152,16 @@ $$
 i^2 = j^2 = k^2 = ijk = -1
 $$
 
-Because multiplication is non-commutative, the order of multiplication determines the sign (similar to the cross product):
+These identities define the cyclic multiplication rules:
 
 $$
-ij = k \quad \implies \quad ji = -k
+ij = k, \quad jk = i, \quad ki = j
 $$
 
-$$
-jk = i \quad \implies \quad kj = -i
-$$
+Reversing the multiplication order negates the product (similar to the vector cross product):
 
 $$
-ki = j \quad \implies \quad ik = -j
+ji = -k, \quad kj = -i, \quad ik = -j
 $$
 
 <center>
@@ -157,42 +169,96 @@ $$
   <img src="../../98_Assets/Concepts/quaternion_multiplication_circle.webp" width="300" height="300" alt="Visual cycle of quaternion imaginary unit multiplication rules">
 </center>
 
-### The Grassmann Product (Quaternion Multiplication)
-Using these identities, the product of two quaternions $q_1 = w_1 + x_1 i + y_1 j + z_1 k$ and $q_2 = w_2 + x_2 i + y_2 j + z_2 k$ can be expanded algebraically:
+##### Component Multiplication
+By expanding the product of two quaternions $(w_1 + x_1 i + y_1 j + z_1 k)(w_2 + x_2 i + y_2 j + z_2 k)$ using the rules above, we get the component-wise formula:
+
+$$
+q_1 q_2 = (w_1 w_2 - x_1 x_2 - y_1 y_2 - z_1 z_2) + (x_1 w_2 + y_1 z_2 - z_1 y_2 + w_1 x_2)i + (y_1 w_2 + z_1 x_2 + w_1 y_2 - x_1 z_2)j + (z_1 w_2 + w_1 z_2 + x_1 y_2 - y_1 x_2)k
+$$
+
+##### Vector Multiplication (The Grassmann Product)
+Using vector algebra, we can write this product in a much more intuitive, compact form:
 
 **(2.10)**
-
-$$
-q_1 q_2 = (w_1 w_2 - x_1 x_2 - y_1 y_2 - z_1 z_2) + (w_1 x_2 + x_1 w_2 + y_1 z_2 - z_1 y_2)i + (w_1 y_2 + y_1 w_2 + z_1 x_2 - x_1 z_2)j + (w_1 z_2 + z_1 w_2 + x_1 y_2 - y_1 x_2)k
-$$
-
-Using vector algebra, this product can be written compactly as:
 
 $$
 q_1 q_2 = (s_1 s_2 - \vec{v}_1 \cdot \vec{v}_2) + (s_1 \vec{v}_2 + s_2 \vec{v}_1 + \vec{v}_1 \times \vec{v}_2)
 $$
 
----
+This splits the result into:
+*   **Scalar part:** $s_1 s_2 - \vec{v}_1 \cdot \vec{v}_2$ (the product of the scalars minus the dot product of the vectors).
+*   **Vector part:** $s_1 \vec{v}_2 + s_2 \vec{v}_1 + \vec{v}_1 \times \vec{v}_2$ (the scaled vector parts plus their cross product).
 
-## 3. Geometric Properties
+##### The Commutativity Difference
+Because the vector part contains a cross product, reversing the order of multiplication yields a different result:
 
-### Magnitude
-The magnitude (norm) of a quaternion is computed in the same way as complex numbers and Euclidean vectors:
+$$
+q_2 q_1 = q_1 q_2 - 2(\vec{v}_1 \times \vec{v}_2)
+$$
+
+This reveals a key geometric property: two quaternions commute **if and only if** their vector parts are parallel (since their cross product $\vec{v}_1 \times \vec{v}_2$ is then $\vec{0}$).
+
+#### 3. Conjugate ($q^*$)
+The conjugate of a quaternion is found by negating its imaginary vector components (similar to complex conjugates):
+
+$$
+q^* = s - \vec{v} = w - xi - yj - zk
+$$
+
+Conjugating a product reverses the order of multiplication:
+
+$$
+(q_1 q_2)^* = q_2^* q_1^*
+$$
+
+#### 4. Magnitude ($\|q\|$)
+The magnitude (or norm) of a quaternion is a real number defined by:
 
 **(2.11)**
 
 $$
-\|q\| = \sqrt{w^2 + x^2 + y^2 + z^2}
+\|q\| = \sqrt{q q^*} = \sqrt{s^2 + \|\vec{v}\|^2} = \sqrt{w^2 + x^2 + y^2 + z^2}
 $$
 
-A quaternion is a **unit quaternion** if $\|q\| = 1$. Unit quaternions represent pure rotations in 3D space.
+*   **Unit Quaternion:** A quaternion is a unit quaternion if $\|q\| = 1$. Only unit quaternions represent pure 3D rotations.
+*   **Multiplicative Property:** The magnitude of a product is equal to the product of their magnitudes:
+    
+    $$
+    \|q_1 q_2\| = \|q_1\| \|q_2\|
+    $$
 
-### 4D Scaling and Rotation
-Multiplying a quaternion $q_2$ by $q_1$ scales the magnitude of $q_2$ and rotates it in 4D space:
+#### 5. Multiplicative Inverse ($q^{-1}$)
+For any non-zero quaternion, its multiplicative inverse $q^{-1}$ is the quaternion that satisfies $q q^{-1} = q^{-1} q = 1$:
 
 $$
-q_1 q_2 = \|q_1\| \left( \frac{q_1}{\|q_1\|} q_2 \right)
+q^{-1} = \frac{q^*}{\|q\|^2} = \frac{s - \vec{v}}{s^2 + \|\vec{v}\|^2}
 $$
+
+*   For unit quaternions ($\|q\| = 1$), the inverse is simply the conjugate: $q^{-1} = q^*$.
+*   Inverting a product reverses the multiplication order:
+    
+    $$
+    (q_1 q_2)^{-1} = q_2^{-1} q_1^{-1}
+    $$
+
+---
+
+## 3. Quaternion Properties Summary
+
+The algebraic properties of quaternion addition and multiplication are summarized in the table below. Here, $q, q_1, q_2, q_3$ are quaternions, and $s, t$ are real scalars.
+
+| Property | Operation | Formula |
+| :--- | :--- | :--- |
+| **Associativity (Addition)** | Addition | $(q_1 + q_2) + q_3 = q_1 + (q_2 + q_3)$ |
+| **Commutativity (Addition)** | Addition | $q_1 + q_2 = q_2 + q_1$ |
+| **Associativity (Scalar)** | Scalar Multiplication | $(st)q = s(tq)$ |
+| **Commutativity (Scalar)** | Scalar Multiplication | $tq = qt$ |
+| **Distributivity (Scalar)** | Scalar Multiplication | $t(q_1 + q_2) = tq_1 + tq_2$ <br> $(s + t)q = sq + tq$ |
+| **Associativity (Multiplication)** | Quaternion Multiplication | $q_1(q_2 q_3) = (q_1 q_2)q_3$ |
+| **Distributivity (Multiplication)** | Quaternion Multiplication | $q_1(q_2 + q_3) = q_1 q_2 + q_1 q_3$ <br> $(q_1 + q_2)q_3 = q_1 q_3 + q_2 q_3$ |
+| **Scalar Factorization** | Mixed Multiplication | $(tq_1)q_2 = q_1(tq_2) = t(q_1 q_2)$ |
+| **Product Rule for Conjugates** | Conjugation | $(q_1 q_2)^* = q_2^* q_1^*$ |
+| **Product Rule for Inverses** | Inversion | $(q_1 q_2)^{-1} = q_2^{-1} q_1^{-1}$ |
 
 ---
 
@@ -302,4 +368,5 @@ This ensures the final output remains in the 3D imaginary subspace.
 ## References & Additional Resources
 
 *   **Ben Eater & Grant Sanderson (3Blue1Brown) - Quaternions Interactive Visualizations:** [eater.net/quaternions](https://eater.net/quaternions)
+*   **How to Use Quaternions:** [youtube.com/watch?v=bKd2lPjl92c](https://www.youtube.com/watch?v=bKd2lPjl92c)
 
