@@ -14,7 +14,7 @@ LinearAlgebra/
 │   ├── 01_Systems_of_Equations/
 │   ├── 02_Vectors/            # e.g., Dot Product, Cross Product, Projections
 │   ├── 03_Matrices/
-│   └── 04_Transforms/         # e.g., Rotations, Reflections, Similarity Transforms
+│   └── 04_Transforms/         # e.g., Rotations, Reflections, Quaternions
 ├── 02_Exercises/              # Practical questions and complete step-by-step solutions
 │   ├── 01_Systems_of_Equations/
 │   │   ├── Questions/         # md files named: Q_[Exercise_Name].md
