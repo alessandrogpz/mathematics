@@ -2,19 +2,29 @@
 
 Quaternions are a four-dimensional extension of complex numbers. While complex numbers extend the real numbers into a 2D plane ($\mathbb{C} = \mathbb{R} + i\mathbb{R}$), quaternions extend them into a 4D space ($\mathbb{H} = \mathbb{R} + i\mathbb{R} + j\mathbb{R} + k\mathbb{R}$). 
 
-In graphics programming, game engines, physics simulations, and quantum mechanics, quaternions provide an elegant, compact, and computationally efficient way to represent and compute 3D rotations without suffering from **Gimbal Lock**.
+In graphics programming, game engines, physics simulations, and robotics, quaternions are the industry standard for representing 3D rotations. They are preferred over rotation matrices and Euler angles because they are compact (using only 4 numbers instead of 9), interpolate smoothly (via SLERP), and completely avoid **Gimbal Lock**.
+
+However, quaternions are notoriously difficult to visualize. **Why do we need a 4D hypersphere to describe 3D rotations?** How does a set of four numbers ($w, i, j, k$) map to a physical rotation axis and angle in our 3D world?
+
+To answer this, we will build our intuition step-by-step using **dimensional projections**. Because we cannot see in 4D, we will start in 2D, project onto 1D, and scale up one dimension at a time until the 4D math becomes clear and tangible.
 
 ---
 
 ## 1. Geometric Intuition: Dimensional Projections
 
-To build an intuitive understanding of a 4D object (like a quaternion) operating in our 3D world, we can study how rotation in $N$-dimensional space is viewed by projecting it down into $N-1$ dimensions using **Stereographic Projection**. This conformal (angle-preserving) mapping technique allows us to trace high-dimensional rotations as continuous motions and coordinate warping in lower-dimensional spaces.
+Since we cannot perceive four dimensions directly, we must project 4D geometry down into our 3D world. The mathematical tool we use for this is **Stereographic Projection**. 
+
+Think of stereographic projection like placing a light source at the pole of a sphere and projecting its surface onto a flat plane (just like projecting a 3D globe onto a 2D flat paper map). This mapping is **conformal** (angle-preserving), which is crucial for rotations: it means circles and spheres in higher dimensions project to clean circles, spheres, or straight lines in lower dimensions.
+
+By studying how rotations in lower dimensions project to even lower dimensions, we can build a visual toolkit to understand how 4D rotations behave in our 3D space.
 
 ### 1D Projection (Rotating a 2D Circle onto a Line)
 
-Consider a 2D unit circle (a 1-sphere, $S^1$) sitting in a 2D plane defined by a real horizontal axis $w$ and an imaginary vertical axis $i$. The circle represents all complex numbers $z = w + xi$ with magnitude $\|z\| = 1$ (so $w^2 + x^2 = 1$). 
+We start with a 2D unit circle (a 1-sphere, $S^1$) because it is the simplest possible case of stereographic projection. It lets us see how a 2D rotation projects to a flow along a 1D line.
 
-We project this circle onto the vertical 1D imaginary axis (the line $w = 0$) using a projection source at the "south pole" $(-1, 0)$, representing the point $-1$ on the real axis:
+Consider the circle sitting in a 2D plane defined by a real horizontal axis $w$ and an imaginary vertical axis $i$. The circle represents all complex numbers $z = w + xi$ with magnitude $\|z\| = 1$ (so $w^2 + x^2 = 1$). 
+
+We project this circle onto the vertical 1D imaginary axis (the line $w = 0$) using a projection source (the red dot) at the "south pole" $(-1, 0)$, representing the point $-1$ on the real axis:
 1. Draw a straight line from the projection source $(-1, 0)$ through any point $(w, x)$ on the circle.
 2. The intersection of this line with the vertical axis ($w = 0$) is the stereographic projection of that point.
 
@@ -30,7 +40,7 @@ p = \frac{x}{w + 1}i
 $$
 
 Under this mapping, specific reference points on the circle project as follows:
-*   **The point $+1$ ($w = 1, x = 0$):** Projects to the origin ($0$) in the center of the vertical line.
+*   **The point $+1$ ($w = 1, x = 0$):** Projects to the origin ($0$) in the center of the vertical line (labeled as `1` in the diagram to denote the projection of the point $+1$).
 *   **The point $i$ ($w = 0, x = 1$):** Projects to the point $i$ on the line.
 *   **The point $-i$ ($w = 0, x = -1$):** Projects to the point $-i$ on the line.
 *   **The point $-1$ ($w = -1, x = 0$):** Since this is the projection source, the projection line is horizontal and parallel to the vertical axis, projecting it to infinity ($\pm\infty$).
@@ -50,6 +60,11 @@ If we rotate the circle counterclockwise (corresponding to successive multiplica
 
 Thus, a closed 2D rotation of the circle corresponds to a continuous, upward flow along the 1D line that wraps around at infinity.
 
+> [!NOTE]
+> **Didactical Bridge: Moving from 1D to 2D Projection**
+> We have now established our first visual rule: **a rotation in a 2D plane projects to a linear flow along a 1D coordinate axis that wraps around at infinity.**
+> What happens when we add a second imaginary axis ($j$)? Instead of a 2D circle projecting onto a 1D line, we will project a 3D sphere onto a 2D plane. Let's see how our 1D flows combine to form a 2D plane.
+
 ### 2D Projection (Rotating a 3D Sphere onto a Plane)
 
 We scale this concept up by projecting a 3D unit sphere (a 2-sphere, $S^2$) onto a 2D plane. Let the sphere be defined by $w^2 + x^2 + y^2 = 1$ in a 3D coordinate system where:
@@ -57,6 +72,8 @@ We scale this concept up by projecting a 3D unit sphere (a 2-sphere, $S^2$) onto
 *   The horizontal axes are the imaginary axes ($i$ and $j$, representing the vector components).
 
 We project the sphere from the south pole $S = -1$ (the point $(-1, 0, 0)$ where the real component $w = -1$) onto the horizontal $ij$-plane ($w = 0$).
+
+As illustrated in the coordinates breakdown diagram below:
 
 <center>
   <!-- Placeholder for 2D Projection Diagram: mapping_sphere_to_plane_1.webp -->
@@ -78,7 +95,7 @@ p = \frac{x}{w + 1}i + \frac{y}{w + 1}j
 $$
 
 Looking at the $ij$-plane from above, this projection divides the sphere into three distinct regions:
-*   **The Equator ($w = 0$):** The equator contains the imaginary unit coordinates ($i, j, -i, -j$). Since $w = 0$, the projection simplifies to $p = xi + yj$, meaning the equator projects exactly onto the unit circle in the plane, staying fixed in place.
+*   **The Equator ($w = 0$):** The equator contains the imaginary unit coordinates ($i, j, -i, -j$). Since $w = 0$, the projection simplifies to $p = xi + yj$, meaning the equator projects exactly onto the unit circle in the plane, staying fixed in place (the pink circle in the diagram).
 *   **The Northern Hemisphere ($w > 0$):** Because $w > 0$, the scaling factor $\frac{1}{w+1}$ is less than $1$. This compresses the hemisphere containing the north pole $+1$ entirely **inside** the unit circle. The north pole $+1$ itself projects directly to the origin.
 *   **The Southern Hemisphere ($w < 0$):** Because $w < 0$, the scaling factor $\frac{1}{w+1}$ is greater than $1$. This stretches the hemisphere containing the south pole $-1$ entirely **outside** the unit circle, with the south pole $-1$ projecting to infinity.
 
@@ -100,10 +117,15 @@ To see how a 3D rotation corresponds to our 1D continuous flow, we can look at t
 </center>
 
 Each axis behaves as an independent 1D projection line for rotations in its corresponding plane:
-*   **Rotation in the $wi$-plane (around the $j$-axis):** This rotation leaves the $j$ component unchanged ($y = 0$). Points on the circle $w^2 + x^2 = 1$ project directly onto the horizontal $i$-axis. As the sphere rotates, the projected coordinates flow along the horizontal $i$-axis: starting at the center ($1$, projection of $+1$), moving right through $i$, wrapping around at $\pm\infty$ on the $i$-axis, and flowing back from $-\infty$ through $-i$ to the center.
-*   **Rotation in the $wj$-plane (around the $i$-axis):** This rotation leaves the $i$ component unchanged ($x = 0$). Points on the circle $w^2 + y^2 = 1$ project directly onto the vertical $j$-axis. The projected coordinates flow along the vertical $j$-axis: starting at the center ($1$, projection of $+1$), moving up through $j$, wrapping at $\pm\infty$ on the $j$-axis, and flowing back from $-\infty$ through $-j$ to the center.
+*   **Rotation in the $wi$-plane (around the $j$-axis):** This rotation leaves the $j$ component unchanged ($y = 0$). Points on the circle $w^2 + x^2 = 1$ project directly onto the horizontal $i$-axis (green circle on the sphere). As the sphere rotates, the projected coordinates flow along the horizontal $i$-axis: starting at the center ($1$, projection of $+1$), moving right through $i$, wrapping around at $\pm\infty$ on the $i$-axis, and flowing back from $-\infty$ through $-i$ to the center.
+*   **Rotation in the $wj$-plane (around the $i$-axis):** This rotation leaves the $i$ component unchanged ($x = 0$). Points on the circle $w^2 + y^2 = 1$ project directly onto the vertical $j$-axis (red circle on the sphere). The projected coordinates flow along the vertical $j$-axis: starting at the center ($1$, projection of $+1$), moving up through $j$, wrapping at $\pm\infty$ on the $j$-axis, and flowing back from $-\infty$ through $-j$ to the center.
 
 Thus, the 2D projection plane is formed by two perpendicular 1D projection lines, where rotations in the orthogonal planes project to wrapping flows along the $i$ and $j$ axes.
+
+> [!NOTE]
+> **Didactical Bridge: The Leap into 4D Space**
+> We now have our second rule: **a 3D sphere rotation projects onto a 2D plane as a grid-warping flow along the perpendicular coordinate axes ($i$ and $j$).**
+> Now we are ready for the final step: adding a third imaginary axis ($k$). We will project a 4D unit hypersphere ($w^2 + x^2 + y^2 + z^2 = 1$) onto our 3D space ($ijk$-space). Just as the 2D plane was formed by the perpendicular $i$ and $j$ axes, our 3D space will be spanned by three perpendicular axes ($i$, $j$, and $k$).
 
 ### 3D Projection (Rotating a 4D Hypersphere onto 3D Space)
 
@@ -137,26 +159,34 @@ Consider pre-multiplying a 3D projected point $p$ by the imaginary unit $i$ (rep
   <img src="../../98_Assets/Concepts/mapping_hypersphere_to_sphere_3.webp" width="700" height="350" alt="Visualizing 4D rotation by i as a flow and rotation in 3D space">
 </center>
 
-Under this multiplication ($i \cdot p$), we can trace the geometric action on our 3D space:
+Under this multiplication ($i \cdot p$), we can trace the geometric action on our 3D space (shown in the box in the diagram):
 *   **Along the $i$-axis (mixing real $w$ and imaginary $i$):** 
     *   $i \cdot 1 = i$
     *   $i \cdot i = -1$ (which maps to infinity)
-    *   This is the exact same continuous 1D flow we saw in the circle case. Points flow along the horizontal $i$-axis: starting at the origin $1$, passing through $i$, wrapping around at infinity (which represents the south pole $-1$), and returning through $-i$.
+    *   This is the exact same continuous 1D flow we saw in the circle case. Points flow along the horizontal $i$-axis (the yellow/green line in the diagram): starting at the origin $1$, passing through $i$, wrapping around at infinity (which represents the south pole $-1$), and returning through $-i$.
 *   **In the perpendicular $jk$-plane (mixing imaginary $j$ and $k$):**
     *   $i \cdot j = k$
     *   $i \cdot k = -j$
-    *   This is a pure 2D rotation of the $jk$-plane around the $i$-axis by $90^\circ$. The dotted pink circle passing through $j, k, -j, -k$ projects as a perfect, un-warped circle, and the points simply rotate along it.
+    *   This is a pure 2D rotation of the $jk$-plane (the red/blue circle in the diagram) around the $i$-axis by $90^\circ$. The points simply rotate along it without any warping.
 
 Thus, a 4D rotation around the $i$-axis projects to our 3D space as a simultaneous **linear wrapping flow** along the $i$-axis, and a **pure 2D rotation** in the perpendicular $jk$-plane.
 
-#### Physical Interpretation: The Axis-Angle Connection in 3D
+> [!NOTE]
+> **Didactical Bridge: Translating 4D Geometry into 3D Physical Rotations**
+> We have now reached the destination of our geometric journey. We understand that a point on the 4D unit hypersphere represents a state of rotation, and moving along the hypersphere projects to combinations of flows and rotations in our 3D space. 
+> But how do we use this algebraic construct in practice? In game engines and physics, we represent this projected geometry as a physical axis of rotation and a rotation value. Let's see how the imaginary components $i, j, k$ and the real component $w$ map directly to physical 3D space.
+
+---
+
+## 2. Physical Interpretation: The Axis-Angle Connection in 3D
+
 When we transition from 4D geometry to practical 3D applications, a unit quaternion $q = w + xi + yj + zk$ is interpreted physically as an **axis of rotation** and a **rotation value**.
 
 *   **The Rotation Axis ($i, j, k$):** The three imaginary components $i, j, k$ correspond to the coordinate axes of the 3D axis around which the rotation occurs. In our 3D visual representations:
     *   **$i$-axis (blue):** Horizontal axis (pointing right).
     *   **$j$-axis (green):** Diagonal axis (pointing depth-wise).
     *   **$k$-axis (yellow):** Vertical axis (pointing straight up).
-
+    
     This rotation axis is represented mathematically by a normalized 3D unit vector:
 
 $$
@@ -165,7 +195,7 @@ $$
 
 *   **The Rotation Value ($w$):** The real scalar component $w$ encodes the amount of rotation.
 
-##### 1. Setting the Axis of Rotation
+### 1. Setting the Axis of Rotation
 By setting the values of the imaginary components $i$, $j$, and $k$, we define the direction of the rotation vector (drawn as a pink double-headed arrow):
 
 *   **Pure $i$-Axis Rotation ($i=1, j=0, k=0$):**  
@@ -196,7 +226,7 @@ By setting the values of the imaginary components $i$, $j$, and $k$, we define t
       <img src="../../98_Assets/Concepts/quaternion_rotation_axis_arbitrary.webp" width="400" height="300" alt="Arbitrary rotation vector in 3D space">
     </center>
 
-##### 2. The Right-Hand Rule
+### 2. The Right-Hand Rule
 When you change the real component $w$, the object rotates around the rotation vector following the **right-hand rule**:
 *   Imagine "grabbing" the rotation vector with your right hand such that your thumb points in the direction the vector is pointing.
 *   A positive $w$ rotation ($w > 0$) rotates the object in the same direction that your fingers naturally curl around the vector.
@@ -207,7 +237,7 @@ When you change the real component $w$, the object rotates around the rotation v
   <img src="../../98_Assets/Concepts/quaternion_right_hand_rule.webp" width="500" height="300" alt="Grabbing the rotation vector with right hand to determine rotation direction">
 </center>
 
-##### 3. Normalization Requirement
+### 3. Normalization Requirement
 For the rotation to be mathematically valid and useful, the 3D rotation vector must always be **normalized** to a length of 1 ($\|\vec{u}\| = 1$) before applying the rotation.
 *   If we set un-normalized values (e.g., $i=-1, j=-1, k=1$), the vector length is:
 

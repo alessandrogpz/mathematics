@@ -253,10 +253,6 @@ This ensures the final output remains in the 3D imaginary subspace.
 * **Second Multiplication ($q^{-1}$):** Acts as a geometric correction. Because it multiplies from the right, it rotates the vector in the opposite direction in the real axis plane, canceling out the real-axis displacement while adding another $\theta/2$ rotation in the 3D plane. 
 * **Net Result:** The vector is projected back into the 3D space, having completed a full rotation of $\theta$.
 
-<center>
-  <!-- Placeholder for Sandwich Rotation Diagram: quaternion_sandwich_rotation.webp -->
-  <img src="../../98_Assets/Concepts/quaternion_sandwich_rotation.webp" width="400" height="300" alt="Geometric visualization of the double multiplication pulling and projecting a vector back to 3D space">
-</center>
 
 ---
 
