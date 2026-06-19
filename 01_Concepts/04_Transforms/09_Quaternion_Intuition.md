@@ -91,6 +91,20 @@ Looking at the $ij$-plane from above, this projection divides the sphere into th
 *   **Rotation around the Real Axis ($w$):** Since this rotation occurs entirely within the horizontal $ij$-plane, it projects to a simple, un-warped 2D rotation of the $ij$-plane around the origin.
 *   **Rotation around an Axis in the $ij$-Plane:** This rotation mixes the real component $w$ with the imaginary components $x$ and $y$. On the plane, the projected coordinate grid (latitude and longitude lines) warps, compressing towards the origin as points rotate towards the north pole, and expanding outwards to infinity as they rotate towards the south pole.
 
+#### Visualizing Sphere Rotations as a Flow on Coordinate Axes
+To see how a 3D rotation corresponds to our 1D continuous flow, we can look at the two coordinate axes (the horizontal $i$-axis and the vertical $j$-axis) in the projection plane:
+
+<center>
+  <!-- Placeholder for Sphere to Line Projection Diagram: mapping_sphere_to_line.webp -->
+  <img src="../../98_Assets/Concepts/mapping_sphere_to_line.webp" width="700" height="300" alt="Mapping sphere coordinates onto 2D projection axes">
+</center>
+
+Each axis behaves as an independent 1D projection line for rotations in its corresponding plane:
+*   **Rotation in the $wi$-plane (around the $j$-axis):** This rotation leaves the $j$ component unchanged ($y = 0$). Points on the circle $w^2 + x^2 = 1$ project directly onto the horizontal $i$-axis. As the sphere rotates, the projected coordinates flow along the horizontal $i$-axis: starting at the center ($1$, projection of $+1$), moving right through $i$, wrapping around at $\pm\infty$ on the $i$-axis, and flowing back from $-\infty$ through $-i$ to the center.
+*   **Rotation in the $wj$-plane (around the $i$-axis):** This rotation leaves the $i$ component unchanged ($x = 0$). Points on the circle $w^2 + y^2 = 1$ project directly onto the vertical $j$-axis. The projected coordinates flow along the vertical $j$-axis: starting at the center ($1$, projection of $+1$), moving up through $j$, wrapping at $\pm\infty$ on the $j$-axis, and flowing back from $-\infty$ through $-j$ to the center.
+
+Thus, the 2D projection plane is formed by two perpendicular 1D projection lines, where rotations in the orthogonal planes project to wrapping flows along the $i$ and $j$ axes.
+
 ### 3D Projection (Rotating a 4D Hypersphere onto 3D Space)
 
 By extension, a quaternion represents a point on a 4D unit hypersphere (a 3-sphere, $S^3$), defined by:
@@ -112,6 +126,100 @@ Under this projection:
 As the 4D hypersphere rotates:
 *   Rotations that only mix $i, j, k$ (leaving the real component $w$ unchanged) project to pure 3D rotations of our space.
 *   Rotations that mix the real component $w$ with the imaginary components cause our 3D space grid to warp, expanding from the origin and stretching out to infinity or compressing inwards.
+
+#### Visualizing Hypersphere Rotations as a Flow in 3D Space
+Just as a 3D sphere rotation projects to flows on coordinate axes in a 2D plane, a 4D hypersphere rotation projects to combined flows and rotations inside our 3D space. 
+
+Consider pre-multiplying a 3D projected point $p$ by the imaginary unit $i$ (representing a 4D rotation by $90^\circ$ in the $wi$-plane and $jk$-plane):
+
+<center>
+  <!-- Placeholder for Hypersphere to Sphere Projection Diagram: mapping_hypersphere_to_sphere_3.webp -->
+  <img src="../../98_Assets/Concepts/mapping_hypersphere_to_sphere_3.webp" width="700" height="350" alt="Visualizing 4D rotation by i as a flow and rotation in 3D space">
+</center>
+
+Under this multiplication ($i \cdot p$), we can trace the geometric action on our 3D space:
+*   **Along the $i$-axis (mixing real $w$ and imaginary $i$):** 
+    *   $i \cdot 1 = i$
+    *   $i \cdot i = -1$ (which maps to infinity)
+    *   This is the exact same continuous 1D flow we saw in the circle case. Points flow along the horizontal $i$-axis: starting at the origin $1$, passing through $i$, wrapping around at infinity (which represents the south pole $-1$), and returning through $-i$.
+*   **In the perpendicular $jk$-plane (mixing imaginary $j$ and $k$):**
+    *   $i \cdot j = k$
+    *   $i \cdot k = -j$
+    *   This is a pure 2D rotation of the $jk$-plane around the $i$-axis by $90^\circ$. The dotted pink circle passing through $j, k, -j, -k$ projects as a perfect, un-warped circle, and the points simply rotate along it.
+
+Thus, a 4D rotation around the $i$-axis projects to our 3D space as a simultaneous **linear wrapping flow** along the $i$-axis, and a **pure 2D rotation** in the perpendicular $jk$-plane.
+
+#### Physical Interpretation: The Axis-Angle Connection in 3D
+When we transition from 4D geometry to practical 3D applications, a unit quaternion $q = w + xi + yj + zk$ is interpreted physically as an **axis of rotation** and a **rotation value**.
+
+*   **The Rotation Axis ($i, j, k$):** The three imaginary components $i, j, k$ correspond to the coordinate axes of the 3D axis around which the rotation occurs. In our 3D visual representations:
+    *   **$i$-axis (blue):** Horizontal axis (pointing right).
+    *   **$j$-axis (green):** Diagonal axis (pointing depth-wise).
+    *   **$k$-axis (yellow):** Vertical axis (pointing straight up).
+
+    This rotation axis is represented mathematically by a normalized 3D unit vector:
+
+$$
+\vec{u} = [u_x, u_y, u_z]^T \quad (\text{where } \|\vec{u}\| = 1)
+$$
+
+*   **The Rotation Value ($w$):** The real scalar component $w$ encodes the amount of rotation.
+
+##### 1. Setting the Axis of Rotation
+By setting the values of the imaginary components $i$, $j$, and $k$, we define the direction of the rotation vector (drawn as a pink double-headed arrow):
+
+*   **Pure $i$-Axis Rotation ($i=1, j=0, k=0$):**  
+    Creates a rotation vector aligned with the horizontal $i$-axis (pointing right).
+    <center>
+      <!-- Placeholder: quaternion_rotation_axis_i.webp -->
+      <img src="../../98_Assets/Concepts/quaternion_rotation_axis_i.webp" width="400" height="300" alt="Rotation axis vector along the i-axis">
+    </center>
+
+*   **Pure $j$-Axis Rotation ($i=0, j=1, k=0$):**  
+    Creates a rotation vector aligned with the diagonal $j$-axis (pointing depth-wise).
+    <center>
+      <!-- Placeholder: quaternion_rotation_axis_j.webp -->
+      <img src="../../98_Assets/Concepts/quaternion_rotation_axis_j.webp" width="400" height="300" alt="Rotation axis vector along the j-axis">
+    </center>
+
+*   **Pure $k$-Axis Rotation ($i=0, j=0, k=1$):**  
+    Creates a rotation vector aligned with the vertical $k$-axis (pointing straight up).
+    <center>
+      <!-- Placeholder: quaternion_rotation_axis_k.webp -->
+      <img src="../../98_Assets/Concepts/quaternion_rotation_axis_k.webp" width="400" height="300" alt="Rotation axis vector along the k-axis">
+    </center>
+
+*   **Arbitrary Axis Rotation (e.g., $i=-1, j=-1, k=1$):**  
+    Creates a diagonal rotation vector pointing in 3D space (specifically pointing left, backward, and up, as shown in the diagram).
+    <center>
+      <!-- Placeholder: quaternion_rotation_axis_arbitrary.webp -->
+      <img src="../../98_Assets/Concepts/quaternion_rotation_axis_arbitrary.webp" width="400" height="300" alt="Arbitrary rotation vector in 3D space">
+    </center>
+
+##### 2. The Right-Hand Rule
+When you change the real component $w$, the object rotates around the rotation vector following the **right-hand rule**:
+*   Imagine "grabbing" the rotation vector with your right hand such that your thumb points in the direction the vector is pointing.
+*   A positive $w$ rotation ($w > 0$) rotates the object in the same direction that your fingers naturally curl around the vector.
+*   For example, for a rotation around the $i$-axis ($i=1, j=0, k=0$) with $w > 0$, the object rotates around the horizontal axis in the direction shown by the green circular arrows:
+
+<center>
+  <!-- Placeholder: quaternion_right_hand_rule.webp -->
+  <img src="../../98_Assets/Concepts/quaternion_right_hand_rule.webp" width="500" height="300" alt="Grabbing the rotation vector with right hand to determine rotation direction">
+</center>
+
+##### 3. Normalization Requirement
+For the rotation to be mathematically valid and useful, the 3D rotation vector must always be **normalized** to a length of 1 ($\|\vec{u}\| = 1$) before applying the rotation.
+*   If we set un-normalized values (e.g., $i=-1, j=-1, k=1$), the vector length is:
+
+$$
+\|\vec{u}\| = \sqrt{(-1)^2 + (-1)^2 + 1^2} = \sqrt{3} \approx 1.732
+$$
+
+*   To normalize this vector, we must divide each component by the length, mapping it onto the 3D unit sphere:
+
+$$
+\vec{u}_{\text{normalized}} = \left[-\frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}}\right]^T \approx [-0.577, -0.577, 0.577]^T
+$$
 
 ---
 

@@ -109,10 +109,11 @@ $$
 
 *   **Unit Quaternion:** A quaternion is a unit quaternion if $\|q\| = 1$. Only unit quaternions represent pure 3D rotations.
 *   **Multiplicative Property:** The magnitude of a product is equal to the product of their magnitudes:
-    
-    $$
-    \|q_1 q_2\| = \|q_1\| \|q_2\|
-    $$
+
+$$
+\|q_1 q_2\| = \|q_1\| \|q_2\|
+$$
+
 
 #### 5. Multiplicative Inverse ($q^{-1}$)
 For any non-zero quaternion, its multiplicative inverse $q^{-1}$ is the quaternion that satisfies $q q^{-1} = q^{-1} q = 1$:
@@ -123,10 +124,11 @@ $$
 
 *   For unit quaternions ($\|q\| = 1$), the inverse is simply the conjugate: $q^{-1} = q^*$.
 *   Inverting a product reverses the multiplication order:
-    
-    $$
-    (q_1 q_2)^{-1} = q_2^{-1} q_1^{-1}
-    $$
+
+$$
+(q_1 q_2)^{-1} = q_2^{-1} q_1^{-1}
+$$
+
 
 ---
 
@@ -166,6 +168,12 @@ For a rotation of angle $\theta$ around a normalized unit axis $\vec{u} = [u_x, 
 $$
 q = \cos\left(\frac{\theta}{2}\right) + \vec{u}\sin\left(\frac{\theta}{2}\right)
 $$
+
+> [!IMPORTANT]
+> **Physical Interpretation:**
+> *   The imaginary components $i, j, k$ represent the **axis of rotation** (scaled by $\sin(\theta/2)$). This axis vector is normalized to a length of 1.
+> *   The real component $w$ represents the **rotation value** (specifically $\cos(\theta/2)$).
+> *   The direction of rotation follows the **right-hand rule**: if you point your right thumb in the direction of the rotation axis $\vec{u}$, your fingers curl in the direction of positive rotation.
 
 #### Where does this formula come from?
 This is the 4D generalization of **Euler's Formula** for 2D complex numbers:
