@@ -37,6 +37,19 @@ $$
 p = \frac{x}{w + 1}i
 $$
 
+> [!TIP]
+> **Why do we project from the South Pole ($w = -1$)?**
+> The denominator $w + 1$ comes from solving the intersection of a line starting at the South Pole $(-1)$ with the plane $w = 0$. If we had projected from the North Pole ($w = 1$), the line equation would yield the formula:
+> 
+> $$
+> p = \frac{x}{1 - w}i
+> $$
+> 
+> We choose the South Pole source because we want the **identity rotation** ($w = 1, x = 0$) to project directly to the origin ($p = 0$). If we used the North Pole source, the identity rotation would project to infinity, making the flow of rotations much harder to visualize. 
+> 
+> For the detailed, step-by-step linear algebra derivation of how changing the projection pole changes the denominator, see the background note: 
+> [[09a_Parametric_Line_Equation]] & [[09b_Stereographic_Projection_Derivation]].
+
 Under this mapping, specific reference points on the circle project as follows:
 *   **The point $+1$ ($w = 1, x = 0$):** Projects to the origin ($0$) in the center of the vertical line (labeled as `1` in the diagram to denote the projection of the point $+1$).
 *   **The point $i$ ($w = 0, x = 1$):** Projects to the point $i$ on the line.
