@@ -48,7 +48,7 @@ $$
 > We choose the South Pole source because we want the **identity rotation** ($w = 1, x = 0$) to project directly to the origin ($p = 0$). If we used the North Pole source, the identity rotation would project to infinity, making the flow of rotations much harder to visualize. 
 > 
 > For the detailed, step-by-step linear algebra derivation of how changing the projection pole changes the denominator, see the background note: 
-> [[09a_Parametric_Line_Equation]] & [[09b_Stereographic_Projection_Derivation]].
+> [[09a_Stereographic_Projection_Derivation]].
 
 Under this mapping, specific reference points on the circle project as follows:
 *   **The point $+1$ ($w = 1, x = 0$):** Projects to the origin ($0$) in the center of the vertical line (labeled as `1` in the diagram to denote the projection of the point $+1$).
