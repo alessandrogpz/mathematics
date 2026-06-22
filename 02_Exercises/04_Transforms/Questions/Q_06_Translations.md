@@ -1,7 +1,12 @@
 ---
 topic: Transforms
-difficulty: Medium
-tags: [exercise, question, translations, homogeneous-coordinates, affine-transformation]
+difficulty: Easy
+tags:
+  - exercise
+  - question
+  - translations
+  - homogeneous-coordinates
+  - affine-transformation
 ---
 # Question
 
