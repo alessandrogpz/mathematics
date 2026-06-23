@@ -132,22 +132,22 @@ A 4D rotation by the imaginary unit $i$ (pre-multiplying a quaternion $p$ by $i$
 
 1.  **Along the $i$-axis (Real $w$ and Imaginary $i$ components):**
     Pre-multiplying by $i$ rotates points in the $wi$-plane:
-    
-    $$
-    i \cdot 1 = i, \quad i \cdot i = -1
-    $$
-    
+
+$$
+i \cdot 1 = i, \quad i \cdot i = -1
+$$
+
     In the projected 3D space, this rotation maps to a **continuous linear wrapping flow** along the horizontal $i$-axis. As $i$ rotates:
     - A point starting at the origin (projection of $+1$) flows along the positive $i$-axis to $i$.
     - As it continues rotating toward $-1$, it stretches to infinity ($+\infty$), wraps around to $-\infty$, and flows back through $-i$ to return to the origin.
     
 2.  **In the perpendicular $jk$-plane (Imaginary $j$ and $k$ components):**
     Pre-multiplying by $i$ rotates points in the $jk$-plane:
-    
-    $$
-    i \cdot j = k, \quad i \cdot k = -j
-    $$
-    
+
+$$
+i \cdot j = k, \quad i \cdot k = -j
+$$
+
     In the projected 3D space, this is a **pure 2D rotation** of the $jk$-plane around the $i$-axis by $90^\circ$ without any warping or stretching.
 
 <center>
@@ -164,16 +164,16 @@ $$
 $$
 
 *   **Magnitude of $\vec{u}_{\text{raw}}$:**
-    
-    $$
-    \|\vec{u}_{\text{raw}}\| = \sqrt{\sum_{i=1}^3 u_{\text{raw},i}^2} = \sqrt{(-2)^2 + 2^2 + (-1)^2} = \sqrt{4 + 4 + 1} = \sqrt{9} = 3
-    $$
+
+$$
+\|\vec{u}_{\text{raw}}\| = \sqrt{\sum_{i=1}^3 u_{\text{raw},i}^2} = \sqrt{(-2)^2 + 2^2 + (-1)^2} = \sqrt{4 + 4 + 1} = \sqrt{9} = 3
+$$
 
 *   **Normalized Unit Vector $\vec{u}$:**
-    
-    $$
-    \vec{u} = \frac{\vec{u}_{\text{raw}}}{\|\vec{u}_{\text{raw}}\|} = \frac{1}{3} \begin{bmatrix} -2 \\\\ 2 \\\\ -1 \end{bmatrix} = \begin{bmatrix} -2/3 \\\\ 2/3 \\\\ -1/3 \end{bmatrix} \approx \begin{bmatrix} -0.67 \\\\ 0.67 \\\\ -0.33 \end{bmatrix}
-    $$
+
+$$
+\vec{u} = \frac{\vec{u}_{\text{raw}}}{\|\vec{u}_{\text{raw}}\|} = \frac{1}{3} \begin{bmatrix} -2 \\\\ 2 \\\\ -1 \end{bmatrix} = \begin{bmatrix} -2/3 \\\\ 2/3 \\\\ -1/3 \end{bmatrix} \approx \begin{bmatrix} -0.67 \\\\ 0.67 \\\\ -0.33 \end{bmatrix}
+$$
 
 ---
 **Back to Question:** [[Q_09_Quaternion_Intuition]] | **Related Concepts:** [[09_Quaternion_Intuition]]
