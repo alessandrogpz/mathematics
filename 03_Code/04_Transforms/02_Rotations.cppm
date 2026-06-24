@@ -92,7 +92,7 @@ export namespace transforms {
     {
         const double radians = degrees * std::numbers::pi / 180.0;
 
-        const vectors::vector3 axis = a.normalized();
+        const vectors::vector3 axis = vectors::normalized(a);
 
         const vectors::vector3 v_parallel = vectors::vecProj(v, axis);
         const vectors::vector3 v_perpendicular = vectors::vecRej(v, axis);

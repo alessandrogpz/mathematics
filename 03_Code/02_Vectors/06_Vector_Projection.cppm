@@ -12,7 +12,7 @@ export namespace vectors {
     [[nodiscard]]
     double scalarProj ( const vector3 a, const vector3 b ) {
 
-        const double magB = b.magnitude();
+        const double magB = magnitude(b);
         if (magB == 0.0)
             return 0.0;
 
@@ -21,7 +21,7 @@ export namespace vectors {
 
     [[nodiscard]]
     vector3 vecProj ( const vector3 a, const vector3 b ) {
-        const double magB = b.magnitude();
+        const double magB = magnitude(b);
         if (magB == 0.0)
             return {0.0, 0.0, 0.0};
 
@@ -37,7 +37,7 @@ export namespace vectors {
     [[nodiscard]]
     matrices::Matrix3x3 projMatrix(const vector3 b)
     {
-        const vector3 u = b.normalized();
+        const vector3 u = normalized(b);
         matrices::Matrix3x3 P{};
 
         P[0, 0] = u.x * u.x;

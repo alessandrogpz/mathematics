@@ -28,7 +28,7 @@ export namespace transforms {
     vectors::vector3 scaleArbitraryAxis ( const vectors::vector3 v, const vectors::vector3 a, const double s)
     {
         matrices::Matrix3x3 scaleArbitrary {};
-        vectors::vector3 n = a.normalized();
+        vectors::vector3 n = vectors::normalized(a);
 
         scaleArbitrary[0, 0] = ( s - 1 ) * ( n.x * n.x ) + 1;
         scaleArbitrary[0, 1] = ( s - 1 ) * ( n.x * n.y );

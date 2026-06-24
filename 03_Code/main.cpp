@@ -41,8 +41,8 @@ int main() {
     matrices::print(A_transposed);
 
     // Trace
-    std::cout << "Trace of A: " << A.trace() << " (Expected: 15)" << std::endl;
-    std::cout << "Trace of I: " << I.trace() << " (Expected: 3)" << std::endl;
+    std::cout << "Trace of A: " << matrices::trace(A) << " (Expected: 15)" << std::endl;
+    std::cout << "Trace of I: " << matrices::trace(I) << " (Expected: 3)" << std::endl;
 
 
     // --- 2. Matrix Multiplication ---

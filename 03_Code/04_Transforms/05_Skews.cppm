@@ -17,8 +17,8 @@ export namespace transforms
                             const vectors::vector3 v,
                             const double degrees )
     {
-        const vectors::vector3 n = a.normalized();
-        const vectors::vector3 m = b.normalized();
+        const vectors::vector3 n = vectors::normalized(a);
+        const vectors::vector3 m = vectors::normalized(b);
         const double radians = degrees * std::numbers::pi / 180.0;
         const double tan_t = std::tan(radians);
         matrices::Matrix3x3 M_SKEW{};

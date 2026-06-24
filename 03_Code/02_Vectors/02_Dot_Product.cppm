@@ -17,14 +17,14 @@ export namespace vectors {
 
     [[nodiscard]]
     double dotGeo(const vector3 a, const vector3 b, const double theta) {
-        return a.magnitude() * b.magnitude() * std::cos(theta);
+        return magnitude(a) * magnitude(b) * std::cos(theta);
     }
 
     [[nodiscard]]
     double angle(const vector3 a, const vector3 b)
     {
-        const double magA = a.magnitude();
-        const double magB = b.magnitude();
+        const double magA = magnitude(a);
+        const double magB = magnitude(b);
         if (magA == 0.0 || magB == 0.0) return 0.0;
 
         const double cosTheta = dot(a, b) / (magA * magB);

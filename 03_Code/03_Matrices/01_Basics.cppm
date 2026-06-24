@@ -97,4 +97,9 @@ export namespace matrices {
             std::cout << "]" << std::endl;
         }
     }
+
+    [[nodiscard]]
+    double trace(const Matrix3x3& m) {
+        return m.trace();
+    }
 }

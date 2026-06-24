@@ -11,7 +11,7 @@ export namespace transforms {
     [[nodiscard]]
     vectors::vector3 reflection(const vectors::vector3 a, const vectors::vector3 v)
     {
-        const vectors::vector3 n = a.normalized();
+        const vectors::vector3 n = vectors::normalized(a);
         matrices::Matrix3x3 reflect = {};
 
         reflect[0, 0] = 1 - 2 * (n.x * n.x);
@@ -33,7 +33,7 @@ export namespace transforms {
     [[nodiscard]]
     vectors::vector3 involution(const vectors::vector3 a, const vectors::vector3 v)
     {
-        const vectors::vector3 n = a.normalized();
+        const vectors::vector3 n = vectors::normalized(a);
         matrices::Matrix3x3 reflect = {};
 
         reflect[0, 0] = 2 * (n.x * n.x) - 1;

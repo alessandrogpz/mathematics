@@ -47,7 +47,7 @@ export namespace transforms {
     [[nodiscard]]
     double qMagnitude(const Quaternion& q)
     {
-        const double vec_mag = q.v_comp.magnitude();
+        const double vec_mag = vectors::magnitude(q.v_comp);
         return sqrt(q.scalar * q.scalar + vec_mag * vec_mag);
     }
 
@@ -74,7 +74,7 @@ export namespace transforms {
     {
         const double radians = degrees * std::numbers::pi / 180.0;
         const double half_angle = radians * 0.5;
-        const vectors::vector3 normalized_axis = axis.normalized();
+        const vectors::vector3 normalized_axis = vectors::normalized(axis);
         return { std::cos(half_angle), normalized_axis * std::sin(half_angle) };
     }
 

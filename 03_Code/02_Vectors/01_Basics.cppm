@@ -68,4 +68,14 @@ export namespace vectors {
             m[2, 0]*v.x + m[2, 1]*v.y + m[2, 2]*v.z
         };
     }
+
+    [[nodiscard]]
+    double magnitude(const vector3 v) {
+        return v.magnitude();
+    }
+
+    [[nodiscard]]
+    vector3 normalized(const vector3 v) {
+        return v.normalized();
+    }
 }
