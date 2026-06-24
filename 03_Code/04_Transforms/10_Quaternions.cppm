@@ -7,31 +7,29 @@ module;
 export module transforms_quaternions;
 
 import vectors_basics;
-import vectors_cross_product;
-import vectors_dot_product;
 
 export namespace transforms {
-    struct Quaternion
+    struct alignas(32) Quaternion
     {
-        double scalar{};
-        vectors::vector3 v_comp{};
+        double w{0.0}, x{0.0}, y{0.0}, z{0.0};
 
         Quaternion() = default;
 
-        Quaternion(const double sVal, const double iVal, const double jVal, const double kVal)
-            : scalar(sVal), v_comp(iVal, jVal, kVal) {}
+        Quaternion(const double wVal, const double xVal, const double yVal, const double zVal)
+            : w(wVal), x(xVal), y(yVal), z(zVal) {}
 
-        Quaternion(const double sVal, const vectors::vector3& vVal)
-            : scalar(sVal), v_comp(vVal) {}
+        Quaternion(const double wVal, const vectors::vector3& vVal)
+            : w(wVal), x(vVal.x), y(vVal.y), z(vVal.z) {}
 
         [[nodiscard]]
         Quaternion operator*(const Quaternion other) const
         {
-            const double s = (scalar * other.scalar) - vectors::dot(v_comp, other.v_comp);
-            const vectors::vector3 v = (other.v_comp * scalar) +
-                                       (v_comp * other.scalar) +
-                                       vectors::crossProd(v_comp, other.v_comp);
-            return { s, v };
+            return {
+                w * other.w - x * other.x - y * other.y - z * other.z,
+                w * other.x + x * other.w + y * other.z - z * other.y,
+                w * other.y - x * other.z + y * other.w + z * other.x,
+                w * other.z + x * other.y - y * other.x + z * other.w
+            };
         }
 
         Quaternion operator/(const double value) const
@@ -40,21 +38,20 @@ export namespace transforms {
                 return *this;
             }
             const double reciprocal = 1.0 / value;
-            return { scalar * reciprocal, v_comp * reciprocal };
+            return { w * reciprocal, x * reciprocal, y * reciprocal, z * reciprocal };
         }
     };
 
     [[nodiscard]]
     double qMagnitude(const Quaternion& q)
     {
-        const double vec_mag = vectors::magnitude(q.v_comp);
-        return sqrt(q.scalar * q.scalar + vec_mag * vec_mag);
+        return std::sqrt(q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z);
     }
 
     [[nodiscard]]
     Quaternion qConjugate(const Quaternion& q)
     {
-        return {q.scalar, -q.v_comp.x, -q.v_comp.y, -q.v_comp.z};
+        return { q.w, -q.x, -q.y, -q.z };
     }
 
     [[nodiscard]]
@@ -85,6 +82,6 @@ export namespace transforms {
         const Quaternion p(0.0, v);
         const Quaternion q_inv = qInverse(q);
         const Quaternion p_prime = q * p * q_inv;
-        return p_prime.v_comp;
+        return vectors::vector3(p_prime.x, p_prime.y, p_prime.z);
     }
 }

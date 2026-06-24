@@ -177,5 +177,14 @@ int main() {
     std::cout << "Original Vector: (" << skew_v.x << ", " << skew_v.y << ", " << skew_v.z << ")" << std::endl;
     std::cout << "Skew (45° along X relative to Y): (" << sk_res.x << ", " << sk_res.y << ", " << sk_res.z << ") (Expected: 5, 3, 5)" << std::endl;
 
+    // --- 10. Quaternion Rotations ---
+    std::cout << "\n10. --- Quaternion Rotations ---" << std::endl;
+    vectors::vector3 q_axis{0.0, 0.0, 1.0}; // Z-axis
+    vectors::vector3 q_v{0.0, 1.0, 0.0};    // Pointing along Y
+    transforms::Quaternion q = transforms::qRotationAxisAngle(q_axis, 90.0);
+    vectors::vector3 q_rotated = transforms::qRotateVector(q_v, q);
+    std::cout << "Original Vector: (" << q_v.x << ", " << q_v.y << ", " << q_v.z << ")" << std::endl;
+    std::cout << "Rotated 90° about Z via Quaternion: (" << q_rotated.x << ", " << q_rotated.y << ", " << q_rotated.z << ") (Expected: -1, 0, 0)" << std::endl;
+
     return 0;
 }

@@ -9,42 +9,42 @@ import matrices_basics;
 
 export namespace vectors {
 
-    struct vector3
+    struct alignas(32) vector3
     {
-        double x{0.0}, y{0.0}, z{0.0};
+        double x{0.0}, y{0.0}, z{0.0}, w{0.0};
 
         vector3() = default;
 
-        vector3(const double xVal, const double yVal, const double zVal)
-            : x(xVal), y(yVal), z(zVal) {}
+        vector3(const double xVal, const double yVal, const double zVal, const double wVal = 0.0)
+            : x(xVal), y(yVal), z(zVal), w(wVal) {}
 
         [[nodiscard]]
         vector3 operator+(const vector3 other) const {
-            return { x + other.x, y + other.y, z + other.z };
+            return { x + other.x, y + other.y, z + other.z, w + other.w };
         }
 
         [[nodiscard]]
         vector3 operator-(const vector3 other) const {
-            return { x - other.x, y - other.y, z - other.z };
+            return { x - other.x, y - other.y, z - other.z, w - other.w };
         }
 
         [[nodiscard]]
         vector3 operator*(const double value) const {
-            return { x * value, y * value, z * value };
+            return { x * value, y * value, z * value, w * value };
         }
 
         [[nodiscard]]
         vector3 operator/(const double value) const {
-            if (value == 0.0f)
-                return {x, y, z};
+            if (value == 0.0)
+                return {x, y, z, w};
 
             const double reciprocal = 1.0 / value;
-            return { x * reciprocal, y * reciprocal, z * reciprocal };
+            return { x * reciprocal, y * reciprocal, z * reciprocal, w * reciprocal };
         }
 
         [[nodiscard]]
         double magnitude() const {
-            return std::sqrt((x * x) + (y * y) + (z * z));
+            return std::sqrt((x * x) + (y * y) + (z * z) + (w * w));
         }
 
         [[nodiscard]]
@@ -52,10 +52,10 @@ export namespace vectors {
         {
             const double m = magnitude();
             if (m == 0.0)
-                return {0.0, 0.0, 0.0};
+                return {0.0, 0.0, 0.0, 0.0};
 
             const double reciprocal = 1.0 / m;
-            return { x * reciprocal, y * reciprocal, z * reciprocal };
+            return { x * reciprocal, y * reciprocal, z * reciprocal, w * reciprocal };
         }
     };
 
