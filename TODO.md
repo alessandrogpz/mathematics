@@ -10,7 +10,7 @@ These solution files still contain `[Insert ...]` placeholders that need LaTeX m
 - [x] Complete **Linear Systems** derivation: [S_01_Linear_Systems.md](02_Exercises/01_Systems_of_Equations/Solutions/S_01_Linear_Systems.md)
 
 ### Vectors
-- [ ] Complete **Cross Product** derivation: [S_04_Cross_Product.md](02_Exercises/02_Vectors/Solutions/S_04_Cross_Product.md)
+- [x] Complete **Cross Product** derivation: [S_04_Cross_Product.md](02_Exercises/02_Vectors/Solutions/S_04_Cross_Product.md)
 - [ ] Complete **Scalar Triple Product** derivation: [S_05_Scalar_Triple_Product.md](02_Exercises/02_Vectors/Solutions/S_05_Scalar_Triple_Product.md)
 - [ ] Complete **Projection Matrix** calculation & theory: [S_06_Projection_Matrix.md](02_Exercises/02_Vectors/Solutions/S_06_Projection_Matrix.md)
 - [ ] Complete **Projection Orthogonality** proof: [S_06_Projection_Orthogonality.md](02_Exercises/02_Vectors/Solutions/S_06_Projection_Orthogonality.md)
